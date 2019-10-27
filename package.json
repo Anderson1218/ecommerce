@@ -1,0 +1,23 @@
+{
+  "name": "ecommerce",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "firebase": "^7.2.2",
+    "next": "9.1.1",
+    "react": "16.11.0",
+    "react-bootstrap": "^1.0.0-beta.14",
+    "react-dom": "16.11.0",
+    "react-redux": "^7.1.1",
+    "redux": "^4.0.4",
+    "redux-devtools-extension": "^2.13.8"
+  },
+  "devDependencies": {
+    "babel-plugin-inline-react-svg": "^1.1.0"
+  }
+}
