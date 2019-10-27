@@ -2,17 +2,14 @@ import React from "react";
 import { Card, Button } from "react-bootstrap";
 
 const CustomCard = props => {
-  const { name, imageUrL, price } = props;
+  const { name, imageUrl, price } = props;
   return (
-    <>
+    <div className="box-shadow">
       <Card className="h-100 box-shadow">
-        <Card.Img variant="top" src={imageUrL} />
+        <Card.Img variant="top" src={imageUrl} />
         <Card.Body>
           <Card.Title>{name}</Card.Title>
-          <Card.Text>
-            With supporting text below as a natural lead-in to additional
-            content.
-          </Card.Text>
+          <Card.Text>info..</Card.Text>
         </Card.Body>
         <Card.Footer className="text-muted">
           <span className="mr-3">${price}</span>
@@ -29,7 +26,7 @@ const CustomCard = props => {
           box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
         }
       `}</style>
-    </>
+    </div>
   );
 };
 

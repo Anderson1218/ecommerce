@@ -1,26 +1,53 @@
 import React from "react";
-import "./collection-preview.styles.scss";
-import CollectionItem from "../collection-item/collection-item.component";
-import { withRouter } from "react-router-dom";
-import { Header } from "semantic-ui-react";
+import CustomCard from "../custom-card/custom-card";
 
-const CollectionPreview = ({ title, items, history, match, routeName }) => (
+const CollectionPreview = ({ title, items }) => (
   <div className="collection-preview">
-    <Header
-      as="h1"
-      color="teal"
-      onClick={() => history.push(`${match.path}/${routeName}`)}
-    >
-      {title} (click here to see more!)
-    </Header>
+    <h1 className="title">{title.toUpperCase()}</h1>
     <div className="preview">
       {items
-        .filter((item, index) => index < 4)
+        .filter((item, idx) => idx < 4)
         .map(item => (
-          <CollectionItem key={item.id} item={item} />
+          <div className="collection-item">
+            <CustomCard
+              key={item.id}
+              name={item.name}
+              imageUrl={item.imageUrl}
+              price={item.price}
+            />
+          </div>
         ))}
     </div>
+    <style jsx>
+      {`
+        .collection-preview {
+          display: flex;
+          flex-direction: column;
+          margin-bottom: 30px;
+        }
+        .collection-item {
+          margin-left: 0.8rem;
+          margin-right: 0.8rem;
+        }
+        .title {
+          font-size: 28px;
+          margin-bottom: 25px;
+        }
+
+        .preview {
+          display: flex;
+        }
+
+        h1 {
+          cursor: pointer;
+        }
+
+        h1:hover {
+          color: grey;
+        }
+      `}
+    </style>
   </div>
 );
 
-export default withRouter(CollectionPreview);
+export default CollectionPreview;

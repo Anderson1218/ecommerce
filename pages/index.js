@@ -1,6 +1,7 @@
 import React from "react";
 import { Jumbotron, Container, Row, Col, ListGroup } from "react-bootstrap";
 import CustomCard from "../components/custom-card/custom-card";
+import CollectionOverview from "../components/collections-overview/collections-overview.component";
 import Head from "next/head";
 import Layout from "../components/layout/layout";
 import { withRedux } from "../redux/with-redux";
@@ -11,21 +12,8 @@ import {
 } from "../firebase/firebase-utils";
 
 const HomePage = props => {
-  let arr = [];
-  //fake data
-  for (let i = 0; i < 8; i++) {
-    arr.push(
-      <Col key={i} sm={4} className="mb-4">
-        <CustomCard
-          name={props.collections.cats.items[0].name}
-          imageUrL={props.collections.cats.items[0].imageUrl}
-          price={props.collections.cats.items[0].price}
-        />
-      </Col>
-    );
-  }
   return (
-    <>
+    <div>
       <Head>
         <title>Home</title>
         <link rel="icon" href="/favicon.ico" />
@@ -49,12 +37,16 @@ const HomePage = props => {
         <Container>
           <Row>
             <Col>
-              <Row>{arr}</Row>
+              <CollectionOverview
+                collections={Object.keys(props.collections).map(
+                  key => props.collections[key]
+                )}
+              />
             </Col>
           </Row>
         </Container>
       </Layout>
-    </>
+    </div>
   );
 };
 
