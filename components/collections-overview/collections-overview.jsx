@@ -1,5 +1,5 @@
 import React from "react";
-import CollectionPreview from "../collection-preview/collection-preview.component";
+import CollectionPreview from "../collection-preview/collection-preview";
 
 const CollectionsOverview = ({ collections }) => (
   <div className="collections-overview">

@@ -1,7 +1,6 @@
 import React from "react";
 import { Jumbotron, Container, Row, Col, ListGroup } from "react-bootstrap";
-import CustomCard from "../components/custom-card/custom-card";
-import CollectionOverview from "../components/collections-overview/collections-overview.component";
+import CollectionOverview from "../components/collections-overview/collections-overview";
 import Head from "next/head";
 import Layout from "../components/layout/layout";
 import { withRedux } from "../redux/with-redux";
