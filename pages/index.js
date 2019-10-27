@@ -1,5 +1,5 @@
 import React from "react";
-import { Jumbotron, Container, Row, Col, ListGroup } from "react-bootstrap";
+import { Jumbotron, Container, Row, Col } from "react-bootstrap";
 import CollectionOverview from "../components/collections-overview/collections-overview";
 import Head from "next/head";
 import Layout from "../components/layout/layout";

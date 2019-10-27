@@ -9,11 +9,7 @@ const CollectionPreview = ({ title, items }) => (
         .filter((item, idx) => idx < 4)
         .map(item => (
           <div key={item.id} className="collection-item">
-            <CustomCard
-              name={item.name}
-              imageUrl={item.imageUrl}
-              price={item.price}
-            />
+            <CustomCard item={item} />
           </div>
         ))}
     </div>

@@ -1,11 +1,14 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import { Card, Button } from "react-bootstrap";
+import { addItem } from "../../redux/cart/cart.actions";
 
 const CustomCard = props => {
-  const { name, imageUrl, price } = props;
+  const { name, imageUrl, price } = props.item;
+  const dispatch = useDispatch();
   return (
     <div className="box-shadow">
-      <Card className="h-100 box-shadow">
+      <Card className="h-100">
         <Card.Img variant="top" src={imageUrl} />
         <Card.Body>
           <Card.Title>{name}</Card.Title>
@@ -13,7 +16,14 @@ const CustomCard = props => {
         </Card.Body>
         <Card.Footer className="text-muted">
           <span className="mr-3">${price}</span>
-          <Button variant="primary">加到購物車</Button>
+          <Button
+            variant="primary"
+            onClick={() => {
+              dispatch(addItem(props.item));
+            }}
+          >
+            加到購物車
+          </Button>
         </Card.Footer>
       </Card>
       <style jsx>{`
