@@ -6,7 +6,6 @@ const Layout = props => {
     <>
       <div className="w-100 fixed-top">
         <Header />
-        <SearchBar />
       </div>
       <div className="page-wrapper">{props.children}</div>
       <style jsx>
@@ -14,7 +13,7 @@ const Layout = props => {
           .page-wrapper {
             display: flex;
             flex-direction: column;
-            margin-top: 7.4375rem;
+            margin-top: 4rem;
           }
         `}
       </style>

@@ -1,55 +1,25 @@
-import firebase from "firebase/app";
-//auto attached to firebase after importing
-import "firebase/firestore";
-import "firebase/auth";
-import "firebase/storage";
-import "firebase/database";
+const admin = require("firebase-admin");
 
-const config = {
-  apiKey: "AIzaSyA5IQkLsRAa4Ur_ToFPxoaa5hj0oPGthd0",
-  authDomain: "an-store.firebaseapp.com",
-  databaseURL: "https://an-store.firebaseio.com",
-  projectId: "an-store",
-  storageBucket: "an-store.appspot.com",
-  messagingSenderId: "267616470835",
-  appId: "1:267616470835:web:392f240d23b65b24"
-};
+require("dotenv").config();
+admin.initializeApp({
+  credential: admin.credential.cert({
+    type: "service_account",
+    project_id: process.env.FIREBASE_PROJECT_ID,
+    private_key_id: process.env.FIREBASE_PRIVITE_KEY_ID,
+    private_key: process.env.FIREBASE_PRIVITE_KEY.replace(/\\n/g, "\n"),
+    client_email: process.env.FIREBASE_CLIENT_EMAIL,
+    client_id: process.env.FIREBASE_CLIENT_ID,
+    auth_uri: process.env.FIREBASE_AUTH_URI,
+    token_uri: process.env.FIREBASE_TOKEN_URI,
+    auth_provider_x509_cert_url:
+      process.env.FIREBASE_AUTH_PROVIDER_X509_CERT_URL,
+    client_x509_cert_url: process.env.FIREBASE_CLIENT_X509_CERT_URL
+  })
+});
 
-if (!firebase.apps.length) {
-  firebase.initializeApp(config);
-}
+const db = admin.firestore();
 
-const provider = new firebase.auth.GoogleAuthProvider();
-//always trigger the google pop-up whenever we use provider
-provider.setCustomParameters({ prompt: "select_account" });
-
-export const createUserProfileDocument = async (userAuth, additionalData) => {
-  if (!userAuth) return;
-
-  const userRef = firestore.doc(`users/${userAuth.uid}`);
-
-  const snapShot = await userRef.get();
-
-  if (!snapShot.exists) {
-    const { displayName, email, photoURL } = userAuth;
-    const createdAt = new Date();
-    try {
-      await userRef.set({
-        displayName,
-        email,
-        createdAt,
-        photoURL,
-        ...additionalData
-      });
-    } catch (error) {
-      console.log("create user profile document fail", error.message);
-    }
-  }
-  //return userRef for future usage
-  return userRef;
-};
-
-export const convertCollectionsSnapshotToMap = collections => {
+const convertCollectionsSnapshotToMap = collections => {
   const transformedCollection = collections.docs.map(doc => {
     const { title, items } = doc.data();
     return {
@@ -65,9 +35,7 @@ export const convertCollectionsSnapshotToMap = collections => {
   }, {});
 };
 
-export const auth = firebase.auth();
-export const firestore = firebase.firestore();
-export const realTimeDb = firebase.database();
-export const storage = firebase.storage();
-export const signInWithGoogle = () => auth.signInWithPopup(provider);
-export default firebase;
+module.exports = {
+  fireStore: db,
+  convertCollectionsSnapshotToMap: convertCollectionsSnapshotToMap
+};
