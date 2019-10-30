@@ -4,9 +4,7 @@ import SearchBar from "../search-bar/search-bar";
 const Layout = props => {
   return (
     <>
-      <div className="w-100 fixed-top">
-        <Header />
-      </div>
+      <Header />
       <div className="page-wrapper">{props.children}</div>
       <style jsx>
         {`

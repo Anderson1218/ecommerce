@@ -17,7 +17,7 @@ app
   .then(() => {
     const server = express();
 
-    //express.json is a built-in body parser, don't need to install body-parser
+    //express.json() is a built-in body parser now, don't need to install body-parser
     server.use(express.json());
 
     server.get("/api/collections", async (req, res) => {
