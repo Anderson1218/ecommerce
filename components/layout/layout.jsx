@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "../header/header";
-import SearchBar from "../search-bar/search-bar";
+
 const Layout = props => {
   return (
     <>

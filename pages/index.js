@@ -4,7 +4,6 @@ import CollectionOverview from "../components/collections-overview/collections-o
 import Head from "next/head";
 import Layout from "../components/layout/layout";
 import { withRedux } from "../redux/with-redux";
-import Link from "next/link";
 import axios from "axios";
 
 const HomePage = props => {
@@ -22,9 +21,6 @@ const HomePage = props => {
       </Head>
       <Layout>
         <img src="https://mdbootstrap.com/img/Photos/Slides/img%20(134).jpg"></img>
-        <Link href="/about">
-          <a>About Page</a>
-        </Link>
         <Container>
           <Row>
             <Col>
@@ -60,7 +56,6 @@ HomePage.getInitialProps = async ({ reduxStore }) => {
   try {
     const response = await axiosInstance.get("/api/collections");
     const collections = response.data;
-    console.log(collections);
     return { collections };
   } catch (error) {
     console.log("initialProps Err", error);

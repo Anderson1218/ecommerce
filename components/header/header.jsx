@@ -1,36 +1,24 @@
-import React from "react";
-import { Navbar, Nav, NavDropdown, Container } from "react-bootstrap";
-import CartIcon from "../cart-icon/cart-icon";
+import React, { useState } from "react";
+import { Navbar, Nav, Container } from "react-bootstrap";
+import CustomModal from "../custom-modal/custom-modal";
+import CartDropdown from "../cart-dropdown/cart-dropdown";
+import Link from "next/link";
 
-const Header = props => {
+const Header = () => {
+  const [isModalOpen, setModel] = useState(false);
+
   return (
     <div className="w-100 fixed-top">
       <Navbar bg="white" expand="lg">
         <Container>
-          <Navbar.Brand href="#home">Hello</Navbar.Brand>
+          <Navbar.Brand>
+            <Link href="/">
+              <a>Home</a>
+            </Link>
+          </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">
-              <Nav.Link href="#home">Home</Nav.Link>
-              <Nav.Link href="#link">Link</Nav.Link>
-              <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-                <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">
-                  Another action
-                </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">
-                  Something
-                </NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="#action/3.4">
-                  Separated link
-                </NavDropdown.Item>
-              </NavDropdown>
-            </Nav>
-            <Nav>
-              <Nav.Item>
-                <CartIcon />
-              </Nav.Item>
               <Nav.Item>
                 <Nav.Link
                   href="https://an-store.firebaseapp.com/"
@@ -39,16 +27,22 @@ const Header = props => {
                   前往後台
                 </Nav.Link>
               </Nav.Item>
+            </Nav>
+            <Nav>
+              <CartDropdown />
               <Nav.Item>
-                <Nav.Link eventKey="link-1">註冊</Nav.Link>
-              </Nav.Item>
-              <Nav.Item>
-                <Nav.Link eventKey="link-2">登入</Nav.Link>
+                <Nav.Link onClick={() => setModel(!isModalOpen)}>登入</Nav.Link>
               </Nav.Item>
             </Nav>
           </Navbar.Collapse>
         </Container>
       </Navbar>
+      <CustomModal show={isModalOpen} onHide={() => setModel(false)} />
+      <style>{`
+        .dropdown-toggle::after {
+          display: none !important;
+        }
+      `}</style>
     </div>
   );
 };
