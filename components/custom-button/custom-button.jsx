@@ -1,7 +1,9 @@
-const CustomButton = ({ children, inverted, ...otherProps }) => (
+const CustomButton = ({ children, inverted, purchaseBtn, ...otherProps }) => (
   <>
     <button
-      className={`${inverted ? "inverted" : ""} custom-button`}
+      className={`${inverted ? "inverted" : ""} ${
+        purchaseBtn ? "purchase-btn" : ""
+      } custom-button`}
       {...otherProps}
     >
       {children}
@@ -12,10 +14,8 @@ const CustomButton = ({ children, inverted, ...otherProps }) => (
           min-width: 165px;
           width: auto;
           height: 50px;
-          letter-spacing: 0.5px;
-          line-height: 50px;
           padding: 0 35px 0 35px;
-          font-size: 15px;
+          font-size: 1rem;
           background-color: black;
           color: white;
           text-transform: uppercase;
@@ -39,6 +39,16 @@ const CustomButton = ({ children, inverted, ...otherProps }) => (
         .inverted:hover {
           background-color: black;
           color: white;
+          border: none;
+        }
+        .custom-button.purchase-btn {
+          background-color: #00bea4;
+          color: white;
+          border: 1px solid black;
+        }
+        .purchase-btn:hover {
+          background-color: white;
+          color: black;
           border: none;
         }
       `}

@@ -40,7 +40,7 @@ const CartDropdown = () => {
         }
         .empty-message {
           font-size: 1.2rem;
-          margin: 50% auto;
+          margin: 25% auto;
         }
 
         .cart-items {
