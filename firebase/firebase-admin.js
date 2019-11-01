@@ -16,26 +16,7 @@ admin.initializeApp({
     client_x509_cert_url: process.env.FIREBASE_CLIENT_X509_CERT_URL
   })
 });
-
+console.log("init firebase");
 const db = admin.firestore();
 
-const convertCollectionsSnapshotToMap = collections => {
-  const transformedCollection = collections.docs.map(doc => {
-    const { title, items } = doc.data();
-    return {
-      routeName: encodeURI(title.toLowerCase()),
-      id: doc.id,
-      title,
-      items
-    };
-  });
-  return transformedCollection.reduce((accumulator, collection) => {
-    accumulator[collection.title.toLowerCase()] = collection;
-    return accumulator;
-  }, {});
-};
-
-module.exports = {
-  fireStore: db,
-  convertCollectionsSnapshotToMap: convertCollectionsSnapshotToMap
-};
+module.exports = db;

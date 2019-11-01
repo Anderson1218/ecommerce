@@ -4,11 +4,7 @@ const dev = process.env.NODE_ENV !== "production";
 const port = process.env.PORT || 3000;
 const app = next({ dev });
 const handle = app.getRequestHandler();
-const firebase = require("../firebase/firebase-utils");
-const firestore = firebase.fireStore;
-const convertCollectionsSnapshotToMap =
-  firebase.convertCollectionsSnapshotToMap;
-
+const collectionsRoutes = require("./routes/collections");
 /* Loads all variables from .env file to "process.env" */
 require("dotenv").config();
 
@@ -20,19 +16,10 @@ app
     //express.json() is a built-in body parser now, don't need to install body-parser
     server.use(express.json());
 
-    server.get("/api/collections", async (req, res) => {
-      try {
-        const collectionRef = firestore.collection("collections");
-        const snapshot = await collectionRef.get();
-        const collections = convertCollectionsSnapshotToMap(snapshot);
-        res.json(collections);
-      } catch (error) {
-        console.log(error);
-      }
-    });
+    server.use("/api/collections", collectionsRoutes);
 
     server.get("*", (req, res) => {
-      console.log("Next.js handle requests");
+      console.log("pass requests to Next.js");
       return handle(req, res);
     });
 

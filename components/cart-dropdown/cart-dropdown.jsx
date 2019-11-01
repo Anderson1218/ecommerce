@@ -5,6 +5,7 @@ import CustomButton from "../custom-button/custom-button";
 import CartItem from "../cart-item/cart-item";
 import CartIcon from "../cart-icon/cart-icon";
 import { NavDropdown } from "react-bootstrap";
+import Router from "next/router";
 
 const CartDropdown = () => {
   const cartItems = useSelector(selectCartItems);
@@ -23,7 +24,13 @@ const CartDropdown = () => {
               <span className="empty-message">Your cart is empty</span>
             )}
           </div>
-          <CustomButton onClick={() => console.log("hi")}>
+          <CustomButton
+            onClick={() =>
+              Router.push({
+                pathname: "/checkout"
+              })
+            }
+          >
             CHECKOUT
           </CustomButton>
         </div>
