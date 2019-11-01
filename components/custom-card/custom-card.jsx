@@ -8,11 +8,15 @@ const CustomCard = props => {
   const { name, imageUrl, price } = props.item;
   const dispatch = useDispatch();
   return (
-    <div className="box-shadow">
+    <div className="card-wrapper">
       <Card className="h-100">
-        {/*card-img-top is from Card.Img variant=top, in order to use custom class, Do not use <Card.Img>*/}
         <div className="img-wrapper">
-          <img src={imageUrl} className="card-img-top img-animation"></img>
+          <img
+            src={imageUrl}
+            width="300"
+            height="350"
+            className="img-animation"
+          ></img>
         </div>
         <Card.Body>
           <Card.Title>{name}</Card.Title>
@@ -31,12 +35,12 @@ const CustomCard = props => {
         </Card.Footer>
       </Card>
       <style jsx>{`
-        .box-shadow {
-          box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
-          transition: box-shadow 0.5s;
+        .card-wrapper {
+          box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+          transition: box-shadow 0.7s;
         }
 
-        .box-shadow:hover {
+        .card-wrapper:hover {
           box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
         }
 

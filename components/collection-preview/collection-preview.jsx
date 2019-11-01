@@ -18,6 +18,7 @@ const CollectionPreview = ({ title, items }) => (
         .collection-preview {
           display: flex;
           flex-direction: column;
+          align-items: center;
           margin-bottom: 30px;
         }
         .collection-item {

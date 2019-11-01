@@ -1,54 +1,38 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import CollectionOverview from "../components/collections-overview/collections-overview";
+import CustomCarousel from "../components/custom-carousel/custom-carousel";
 import Head from "next/head";
-import Layout from "../components/layout/layout";
-import { withRedux } from "../redux/with-redux";
 import axios from "axios";
 
-const HomePage = props => {
+const HomePage = ({ collections }) => {
+  let collectionsArray = collections
+    ? Object.keys(collections).map(key => collections[key])
+    : [];
   return (
     <div>
       <Head>
         <title>Home</title>
         <link rel="icon" href="/favicon.ico" />
-        <link
-          rel="stylesheet"
-          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-          crossOrigin="anonymous"
-        />
       </Head>
-      <Layout>
-        <img src="https://mdbootstrap.com/img/Photos/Slides/img%20(134).jpg"></img>
-        <Container>
-          <Row>
-            <Col>
-              <CollectionOverview
-                collections={
-                  props.collections &&
-                  Object.keys(props.collections).map(
-                    key => props.collections[key]
-                  )
-                }
-              />
-            </Col>
-          </Row>
-        </Container>
-      </Layout>
-      <style jsx>
-        {`
-          img {
-            max-height: 500px;
-            margin-bottom: 2rem;
-          }
-        `}
-      </style>
+      <CustomCarousel
+        imageUrls={[
+          "https://mdbootstrap.com/img/Photos/Slides/img%20(134).jpg",
+          "https://mdbootstrap.com/img/Photos/Slides/img%20(134).jpg"
+        ]}
+      />
+      <Container className="mt-5">
+        <Row>
+          <Col>
+            <CollectionOverview collections={collectionsArray} />
+          </Col>
+        </Row>
+      </Container>
     </div>
   );
 };
 
-HomePage.getInitialProps = async ({ reduxStore }) => {
+HomePage.getInitialProps = async ({ reduxStore, req }) => {
   //for dev test
   let axiosInstance = axios.create({
     baseURL: "http://localhost:3000"
@@ -62,4 +46,4 @@ HomePage.getInitialProps = async ({ reduxStore }) => {
   }
 };
 
-export default withRedux(HomePage);
+export default HomePage;

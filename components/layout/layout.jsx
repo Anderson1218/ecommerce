@@ -1,11 +1,12 @@
 import React from "react";
 import Header from "../header/header";
+import { withRedux } from "../../redux/with-redux";
 
-const Layout = props => {
+const Layout = ({ children }) => {
   return (
     <>
       <Header />
-      <div className="page-wrapper">{props.children}</div>
+      <div className="page-wrapper">{children}</div>
       <style jsx>
         {`
           .page-wrapper {
@@ -19,4 +20,4 @@ const Layout = props => {
   );
 };
 
-export default Layout;
+export default withRedux(Layout);
