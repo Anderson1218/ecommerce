@@ -18,8 +18,8 @@ app
 
     server.use("/api/collections", collectionsRoutes);
 
+    /* give all Next.js's requests to Next.js server */
     server.get("*", (req, res) => {
-      console.log("pass requests to Next.js");
       return handle(req, res);
     });
 

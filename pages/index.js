@@ -6,21 +6,21 @@ import Head from "next/head";
 import axios from "axios";
 
 const HomePage = ({ collections }) => {
-  let collectionsArray = collections
+  const collectionsArray = collections
     ? Object.keys(collections).map(key => collections[key])
     : [];
+  const imageUrls = [
+    "https://png.pngtree.com/thumb_back/fw800/background/20190220/ourmid/pngtree-technology-electronic-business-financial-image_6193.jpg",
+    "https://png.pngtree.com/thumb_back/fw800/back_our/20190620/ourmid/pngtree-simple-e-commerce-advertising-banner-image_170173.jpg",
+    "https://png.pngtree.com/thumb_back/fw800/background/20190221/ourmid/pngtree-simple-e-commerce-character-business-image_21465.jpg"
+  ];
   return (
     <div>
       <Head>
         <title>Home</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <CustomCarousel
-        imageUrls={[
-          "https://mdbootstrap.com/img/Photos/Slides/img%20(134).jpg",
-          "https://mdbootstrap.com/img/Photos/Slides/img%20(134).jpg"
-        ]}
-      />
+      <CustomCarousel imageUrls={imageUrls} />
       <Container className="mt-5">
         <Row>
           <Col>
