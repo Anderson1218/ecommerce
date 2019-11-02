@@ -41,6 +41,13 @@ const CollectionPreview = ({ title, items }) => (
             grid-gap: 20px;
           }
         }
+        @media screen and (max-width: 700px) {
+          .preview {
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-gap: 20px;
+          }
+        }
 
         h1 {
           cursor: pointer;

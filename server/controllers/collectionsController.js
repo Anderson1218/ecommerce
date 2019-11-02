@@ -1,4 +1,4 @@
-const collectionRef = require("../models/collections");
+const collectionRef = require("../models/Collections");
 
 const convertCollectionsSnapshotToMap = collections => {
   const transformedCollection = collections.docs.map(doc => {
