@@ -66,14 +66,11 @@ const CollectionPage = ({ collection }) => {
 };
 
 CollectionPage.getInitialProps = async ({ query }) => {
-  //for dev test
-  let axiosInstance = axios.create({
-    baseURL: "http://localhost:3000"
-  });
+  // let axiosInstance = axios.create({
+  //   baseURL: "http://localhost:3000"
+  // });
   try {
-    const response = await axiosInstance.get(
-      `/api/collections/${query.collection}`
-    );
+    const response = await axios.get(`/api/collections/${query.collection}`);
     const collection = response.data;
     return { collection };
   } catch (error) {

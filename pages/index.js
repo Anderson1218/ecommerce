@@ -32,13 +32,13 @@ const HomePage = ({ collections }) => {
   );
 };
 
-HomePage.getInitialProps = async ({ reduxStore, req }) => {
-  //for dev test
-  let axiosInstance = axios.create({
-    baseURL: "http://localhost:3000"
-  });
+HomePage.getInitialProps = async () => {
+  // let axiosInstance = axios.create({
+  //   baseURL: "http://localhost:3000"
+  // });
   try {
-    const response = await axiosInstance.get("/api/collections");
+    // const response = await axiosInstance.get("/api/collections");
+    const response = await axios.get("/api/collections");
     const collections = response.data;
     return { collections };
   } catch (error) {
