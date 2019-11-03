@@ -3,6 +3,7 @@ const next = require("next");
 const mongoose = require("mongoose");
 const dev = process.env.NODE_ENV !== "production";
 const port = process.env.PORT || 80;
+const morgan = require("morgan");
 const app = next({ dev });
 const handle = app.getRequestHandler();
 const collectionsRoutes = require("./routes/collectionsRoutes");
@@ -28,15 +29,11 @@ app
   .then(() => {
     const server = express();
 
-    //express.json() is a built-in body parser now, don't need to install body-parser
+    server.use(morgan("short"));
     server.use(express.json());
-
     server.use("/api/auth", authRoutes);
     server.use("/api/collections", collectionsRoutes);
 
-    server.get("/_next/*", (req, res) => {
-      handle(req, res);
-    });
     /* give all Next.js's requests to Next.js server */
     server.get("*", (req, res) => {
       return handle(req, res);
