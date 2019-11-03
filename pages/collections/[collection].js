@@ -25,17 +25,39 @@ const CollectionPage = ({ collection }) => {
             flex-direction: column;
           }
           .title {
-            font-size: 38px;
+            font-size: 2rem;
             margin: 0 auto 30px;
           }
 
           .items {
             display: grid;
             grid-template-columns: 1fr 1fr 1fr 1fr;
-            grid-gap: 10px;
+            justify-items: center;
+            grid-gap: 20px 20px;
           }
-          .items .collection-item {
-            margin-bottom: 30px;
+          @media screen and (max-width: 1199px) {
+            .items {
+              display: grid;
+              grid-template-columns: 1fr 1fr 1fr;
+              justify-items: center;
+              grid-gap: 20px 20px;
+            }
+          }
+          @media screen and (max-width: 991px) {
+            .items {
+              display: grid;
+              grid-template-columns: 1fr 1fr;
+              justify-items: center;
+              grid-gap: 20px 20px;
+            }
+          }
+          @media screen and (max-width: 766px) {
+            .items {
+              display: grid;
+              grid-template-columns: 1fr;
+              justify-items: center;
+              grid-gap: 20px 20px;
+            }
           }
         `}
       </style>
