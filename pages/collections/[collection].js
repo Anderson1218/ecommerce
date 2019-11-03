@@ -1,6 +1,7 @@
 import React from "react";
 import CustomCard from "../../components/custom-card/custom-card";
 import axios from "axios";
+import config from "../../env-config";
 
 const CollectionPage = ({ collection }) => {
   if (!collection) {
@@ -66,15 +67,15 @@ const CollectionPage = ({ collection }) => {
 };
 
 CollectionPage.getInitialProps = async ({ query }) => {
-  // let axiosInstance = axios.create({
-  //   baseURL: "http://localhost:3000"
-  // });
   try {
-    const response = await axios.get(`/api/collections/${query.collection}`);
+    const response = await axios.get(
+      `${config.BASE_URL}/api/collections/${query.collection}`
+    );
     const collection = response.data;
     return { collection };
   } catch (error) {
     console.log("initialProps Err", error);
+    return {};
   }
 };
 

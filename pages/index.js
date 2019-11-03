@@ -4,6 +4,7 @@ import CollectionOverview from "../components/collections-overview/collections-o
 import CustomCarousel from "../components/custom-carousel/custom-carousel";
 import Head from "next/head";
 import axios from "axios";
+import config from "../env-config";
 
 const HomePage = ({ collections }) => {
   const collectionsArray = collections
@@ -33,16 +34,13 @@ const HomePage = ({ collections }) => {
 };
 
 HomePage.getInitialProps = async () => {
-  // let axiosInstance = axios.create({
-  //   baseURL: "http://localhost:3000"
-  // });
   try {
-    // const response = await axiosInstance.get("/api/collections");
-    const response = await axios.get("/api/collections");
-    const collections = response.data;
+    const response = await axios.get(`${config.BASE_URL}/api/collections`);
+    const collections = response.data || {};
     return { collections };
   } catch (error) {
     console.log("initialProps Err", error);
+    return {};
   }
 };
 

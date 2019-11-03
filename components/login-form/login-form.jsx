@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import axios from "axios";
+import config from "../../env-config";
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
@@ -8,7 +9,7 @@ const LoginForm = () => {
   const handleSubmit = async event => {
     event.preventDefault();
     try {
-      const response = await axios.post("/api/auth/signin", {
+      const response = await axios.post(`${config.BASE_URL}/api/auth/signin`, {
         email,
         password
       });

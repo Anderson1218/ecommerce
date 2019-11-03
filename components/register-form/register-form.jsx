@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import axios from "axios";
+import config from "../../env-config";
 
 const RegisterForm = () => {
   const [name, setName] = useState("");
@@ -9,7 +10,7 @@ const RegisterForm = () => {
   const handleSubmit = async event => {
     event.preventDefault();
     try {
-      const response = await axios.post("/api/auth/signup", {
+      const response = await axios.post(`${config.BASE_URL}/api/auth/signup`, {
         name,
         email,
         password
