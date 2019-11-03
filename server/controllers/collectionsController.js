@@ -25,3 +25,14 @@ exports.getAllCollections = async (req, res) => {
     res.status(422).send(err);
   }
 };
+
+exports.getCollectionById = async (req, res) => {
+  try {
+    const id = req.params.id;
+    const snapshot = await collectionRef.get();
+    const collections = convertCollectionsSnapshotToMap(snapshot);
+    res.json(collections[id]);
+  } catch (err) {
+    res.status(422).send(err);
+  }
+};

@@ -1,9 +1,12 @@
 import React from "react";
 import CustomCard from "../custom-card/custom-card";
+import Link from "next/link";
 
-const CollectionPreview = ({ title, items }) => (
+const CollectionPreview = ({ title, items, routeName }) => (
   <div className="collection-preview">
-    <h1 className="title">{title.toUpperCase()}</h1>
+    <Link href="/collections/[collection]" as={`/collections/${routeName}`}>
+      <a>{`SEE MORE ${title.toUpperCase()}`}</a>
+    </Link>
     <div className="preview">
       {items
         .filter((item, idx) => idx < 4)
@@ -49,11 +52,12 @@ const CollectionPreview = ({ title, items }) => (
           }
         }
 
-        h1 {
-          cursor: pointer;
+        a {
+          font-size: 1.5rem;
         }
 
-        h1:hover {
+        a:hover {
+          text-decoration: none;
           color: grey;
         }
       `}
