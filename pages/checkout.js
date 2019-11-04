@@ -1,6 +1,12 @@
 import Head from "next/head";
+import StripeButton from "../components/stripe-button/stripe-button";
+import { useSelector } from "react-redux";
+import { selectCartTotal, selectCartItems } from "../redux/cart/cart.selectors";
+import CheckoutItem from "../components/checkout-item/checkout-item";
 
 const CheckoutPage = () => {
+  const price = useSelector(selectCartTotal);
+  const cartItems = useSelector(selectCartItems);
   return (
     <div>
       <Head>
@@ -25,11 +31,18 @@ const CheckoutPage = () => {
             <span>Remove</span>
           </div>
         </div>
+        <div className="items-container">
+          {cartItems.map(cartItem => (
+            <CheckoutItem key={cartItem.id} cartItem={cartItem} />
+          ))}
+        </div>
+        <span>TOTAL: ${price}</span>
+        <StripeButton price={price} />
       </div>
       <style jsx>{`
         .checkout-page {
-          width: 70%;
-          min-height: 90vh;
+          width: 80%;
+          min-height: 70vh;
           display: flex;
           flex-direction: column;
           align-items: center;
@@ -42,14 +55,19 @@ const CheckoutPage = () => {
           justify-content: space-between;
           border-bottom: 1px solid darkgrey;
         }
+        .items-container {
+          width: 100%;
+          height: 600px;
+          margin-bottom: 15px;
+          overflow: scroll;
+        }
         .header-block {
           text-transform: capitalize;
           width: 23%;
         }
         span {
-          font-size: 1.5em;
+          font-size: 1.5rem;
         }
-
         .header-block:last-child {
           width: 8%;
         }
