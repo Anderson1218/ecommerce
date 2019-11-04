@@ -25,7 +25,7 @@ const CartIcon = () => {
           position: absolute;
           font-size: 0.5rem;
           font-weight: bold;
-          top: 30%;
+          top: 35%;
           color: red;
         }
       `}</style>

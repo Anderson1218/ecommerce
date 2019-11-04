@@ -9,7 +9,7 @@ const Header = () => {
 
   return (
     <div className="w-100 fixed-top">
-      <Navbar bg="white" expand="lg">
+      <Navbar bg="light" expand="lg">
         <Container>
           <Navbar.Brand>
             <Button variant="outline-success" onClick={() => Router.push("/")}>
@@ -36,9 +36,6 @@ const Header = () => {
       <style>{`
         .dropdown-toggle::after {
           display: none !important;
-        }
-        a:link {
-          color: red;
         }
       `}</style>
     </div>
