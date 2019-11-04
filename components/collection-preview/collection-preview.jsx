@@ -40,17 +40,11 @@ const CollectionPreview = ({ title, items, routeName }) => (
         @media screen and (max-width: 1199px) {
           .preview {
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            grid-gap: 20px;
-          }
-        }
-        @media screen and (max-width: 991px) {
-          .preview {
-            display: grid;
             grid-template-columns: 1fr 1fr;
             grid-gap: 20px;
           }
         }
+
         @media screen and (max-width: 766px) {
           .preview {
             display: grid;
