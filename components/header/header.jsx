@@ -13,7 +13,7 @@ const Header = () => {
         <Container>
           <Navbar.Brand>
             <Link href="/">
-              <a>Home</a>
+              <a>SHOP STORE</a>
             </Link>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -30,6 +30,13 @@ const Header = () => {
             </Nav>
             <Nav>
               <CartDropdown />
+              <Nav.Item>
+                <Nav.Link>
+                  <Link href="/checkout">
+                    <a>結帳</a>
+                  </Link>
+                </Nav.Link>
+              </Nav.Item>
               <Nav.Item>
                 <Nav.Link onClick={() => setModel(!isModalOpen)}>登入</Nav.Link>
               </Nav.Item>
