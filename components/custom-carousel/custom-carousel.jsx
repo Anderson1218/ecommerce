@@ -9,10 +9,8 @@ const CustomCarousel = ({ imageUrls }) => {
             <Carousel.Item key={imgUrl}>
               <img className="d-block w-100" src={imgUrl} alt="First slide" />
               <Carousel.Caption>
-                <h3>slide label</h3>
-                <p>
-                  Nulla vitae elit libero, a pharetra augue mollis interdum.
-                </p>
+                <h3>買買買</h3>
+                <p>還是買買買</p>
               </Carousel.Caption>
             </Carousel.Item>
           ))}
@@ -21,6 +19,9 @@ const CustomCarousel = ({ imageUrls }) => {
         {`
           img {
             height: 600px;
+          }
+          h3 {
+            color: grey;
           }
         `}
       </style>

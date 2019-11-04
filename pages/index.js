@@ -11,9 +11,9 @@ const HomePage = ({ collections }) => {
     ? Object.keys(collections).map(key => collections[key])
     : [];
   const imageUrls = [
-    "https://png.pngtree.com/thumb_back/fw800/background/20190220/ourmid/pngtree-technology-electronic-business-financial-image_6193.jpg",
-    "https://png.pngtree.com/thumb_back/fw800/back_our/20190620/ourmid/pngtree-simple-e-commerce-advertising-banner-image_170173.jpg",
-    "https://png.pngtree.com/thumb_back/fw800/background/20190221/ourmid/pngtree-simple-e-commerce-character-business-image_21465.jpg"
+    "https://png.pngtree.com/thumb_back/fw800/back_our/20190620/ourmid/pngtree-you-shop-me-buy-a-shopping-mall-promotion-poster-background-material-image_148388.jpg",
+    "https://png.pngtree.com/thumb_back/fw800/back_our/20190620/ourmid/pngtree-fashion-women-s-products-investment-joining-poster-background-material-image_161486.jpg",
+    "https://png.pngtree.com/thumb_back/fw800/back_our/20190621/ourmid/pngtree-girls--day-queen-s-day-shopping-background-image_199961.jpg"
   ];
   return (
     <div>
