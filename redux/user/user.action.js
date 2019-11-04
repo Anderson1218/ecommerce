@@ -1,6 +1,4 @@
 import UserActionTypes from "./user.types";
-// import { auth, createUserProfileDocument } from "../../firebase/firebase.utils";
-// import md5 from "md5";
 
 export const setCurrentUser = user => ({
   type: UserActionTypes.SET_CURRENT_USER,

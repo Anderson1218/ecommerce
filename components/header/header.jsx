@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { Navbar, Nav, Container } from "react-bootstrap";
+import { Navbar, Nav, Container, Button } from "react-bootstrap";
 import CustomModal from "../custom-modal/custom-modal";
 import CartDropdown from "../cart-dropdown/cart-dropdown";
-import Link from "next/link";
+import Router from "next/router";
 
 const Header = () => {
   const [isModalOpen, setModel] = useState(false);
@@ -12,9 +12,9 @@ const Header = () => {
       <Navbar bg="white" expand="lg">
         <Container>
           <Navbar.Brand>
-            <Link href="/">
-              <a>SHOP STORE</a>
-            </Link>
+            <Button variant="outline-success" onClick={() => Router.push("/")}>
+              SHOP STORE
+            </Button>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
@@ -31,10 +31,8 @@ const Header = () => {
             <Nav>
               <CartDropdown />
               <Nav.Item>
-                <Nav.Link>
-                  <Link href="/checkout">
-                    <a>結帳</a>
-                  </Link>
+                <Nav.Link onClick={() => Router.push("/checkout")}>
+                  來去結帳
                 </Nav.Link>
               </Nav.Item>
               <Nav.Item>
@@ -48,6 +46,9 @@ const Header = () => {
       <style>{`
         .dropdown-toggle::after {
           display: none !important;
+        }
+        a:link {
+          color: red;
         }
       `}</style>
     </div>
