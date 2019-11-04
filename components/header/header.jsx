@@ -22,8 +22,11 @@ const Header = () => {
             />
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="ml-auto">
+          <Navbar.Collapse
+            id="basic-navbar-nav"
+            className="justify-content-end"
+          >
+            <Nav>
               <CartDropdown />
               <Nav.Item>
                 <Nav.Link onClick={() => Router.push("/checkout")}>
