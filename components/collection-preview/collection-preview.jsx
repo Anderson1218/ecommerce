@@ -5,7 +5,7 @@ import Link from "next/link";
 const CollectionPreview = ({ title, items, routeName }) => (
   <div className="collection-preview">
     <Link href="/collections/[collection]" as={`/collections/${routeName}`}>
-      <a>{`SEE MORE ${title.toUpperCase()}`}</a>
+      <a>{`更多 ${title.toUpperCase()} 相關的商品 `}&#10132;</a>
     </Link>
     <div className="preview">
       {items
@@ -60,12 +60,9 @@ const CollectionPreview = ({ title, items, routeName }) => (
         }
 
         a {
-          font-size: 1.5rem;
-        }
-
-        a:hover {
-          text-decoration: none;
           color: grey;
+          font-size: 1.5rem;
+          margin-bottom: 1rem;
         }
       `}
     </style>
