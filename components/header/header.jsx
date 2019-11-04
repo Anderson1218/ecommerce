@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Navbar, Nav, Container, Button } from "react-bootstrap";
+import { Navbar, Nav, Container } from "react-bootstrap";
 import CustomModal from "../custom-modal/custom-modal";
 import CartDropdown from "../cart-dropdown/cart-dropdown";
 import Router from "next/router";
@@ -12,9 +12,14 @@ const Header = () => {
       <Navbar bg="light" expand="lg">
         <Container>
           <Navbar.Brand>
-            <Button variant="outline-success" onClick={() => Router.push("/")}>
-              SHOP STORE
-            </Button>
+            <img
+              alt=""
+              src="/logo.png"
+              width="50"
+              height="40"
+              className="d-inline-block align-top brand-image"
+              onClick={() => Router.push("/")}
+            />
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
@@ -36,6 +41,9 @@ const Header = () => {
       <style>{`
         .dropdown-toggle::after {
           display: none !important;
+        }
+        .brand-image:hover {
+          cursor: pointer;
         }
       `}</style>
     </div>
