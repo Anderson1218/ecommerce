@@ -21,13 +21,12 @@ const Header = () => {
               onClick={() => Router.push("/")}
             />
           </Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse
-            id="basic-navbar-nav"
-            className="justify-content-end"
-          >
+          <div className="d-flex flex-grow-1 justify-content-end">
+            <CartDropdown />
+            <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          </div>
+          <Navbar.Collapse id="basic-navbar-nav" className="flex-grow-0">
             <Nav>
-              <CartDropdown />
               <Nav.Item>
                 <Nav.Link onClick={() => Router.push("/checkout")}>
                   來去結帳
