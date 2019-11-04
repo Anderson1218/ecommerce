@@ -15,27 +15,18 @@ const StripeCheckoutButton = ({ price }) => {
     alert("Payment Successful");
   };
   return (
-    <>
-      <StripeCheckout
-        // label="付款"
-        name="Shop Store"
-        billingAddress
-        shippingAddress
-        image=""
-        description={`Total $${price}`}
-        amount={priceForStripe}
-        panelLabel="Pay"
-        token={onToken}
-        stripeKey={publishableKey}
-      >
-        <button className="btn btn-primary stripe-button">來去付款</button>
-      </StripeCheckout>
-      <style jsx>{`
-        .stripe-button {
-          width: 300px;
-        }
-      `}</style>
-    </>
+    <StripeCheckout
+      label="來去付款"
+      name="Shop Store"
+      billingAddress
+      shippingAddress
+      image=""
+      description={`Total $${price}`}
+      amount={priceForStripe}
+      panelLabel="Pay"
+      token={onToken}
+      stripeKey={publishableKey}
+    />
   );
 };
 

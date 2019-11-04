@@ -70,6 +70,8 @@ const CheckoutPage = () => {
         .items-container {
           width: 100%;
           margin-bottom: 15px;
+          max-height: 600px;
+          overflow: scroll;
         }
         .header-block {
           width: 20%;

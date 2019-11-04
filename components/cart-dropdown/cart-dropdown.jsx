@@ -7,11 +7,11 @@ import CartIcon from "../cart-icon/cart-icon";
 import { NavDropdown } from "react-bootstrap";
 import Router from "next/router";
 
-const CartDropdown = () => {
+const CartDropdown = props => {
   const cartItems = useSelector(selectCartItems);
   return (
     <>
-      <NavDropdown title={<CartIcon />} alignRight>
+      <NavDropdown title={<CartIcon />} alignRight {...props}>
         <div className="cart-dropdown">
           <div className="cart-items">
             {cartItems && cartItems.length ? (
