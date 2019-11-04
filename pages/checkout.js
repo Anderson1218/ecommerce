@@ -17,19 +17,19 @@ const CheckoutPage = () => {
         <div className="checkout-page">
           <div className="checkout-header">
             <div className="header-block">
-              <span>Product</span>
+              <span>產品圖示</span>
             </div>
             <div className="header-block">
-              <span>Product Name</span>
+              <span>產品名稱</span>
             </div>
             <div className="header-block">
-              <span>Quantity</span>
+              <span>數量</span>
             </div>
             <div className="header-block">
-              <span>Price</span>
+              <span>單價</span>
             </div>
             <div className="header-block">
-              <span>Remove</span>
+              <span>刪除</span>
             </div>
           </div>
           <div className="items-container">
@@ -69,13 +69,10 @@ const CheckoutPage = () => {
         }
         .items-container {
           width: 100%;
-          height: 600px;
           margin-bottom: 15px;
-          overflow: scroll;
         }
         .header-block {
-          text-transform: capitalize;
-          width: 23%;
+          width: 20%;
         }
         span {
           font-size: 1.5rem;

@@ -1,5 +1,6 @@
 import React from "react";
 import StripeCheckout from "react-stripe-checkout";
+import { Button } from "react-bootstrap";
 import { clearAllItemsFromCart } from "../../redux/cart/cart.actions";
 import { useDispatch } from "react-redux";
 
@@ -14,18 +15,27 @@ const StripeCheckoutButton = ({ price }) => {
     alert("Payment Successful");
   };
   return (
-    <StripeCheckout
-      label="Pay Now!"
-      name="An Store"
-      billingAddress
-      shippingAddress
-      image=""
-      description={`Total $${price}`}
-      amount={priceForStripe}
-      panelLabel="Pay"
-      token={onToken}
-      stripeKey={publishableKey}
-    />
+    <>
+      <StripeCheckout
+        // label="付款"
+        name="Shop Store"
+        billingAddress
+        shippingAddress
+        image=""
+        description={`Total $${price}`}
+        amount={priceForStripe}
+        panelLabel="Pay"
+        token={onToken}
+        stripeKey={publishableKey}
+      >
+        <button className="btn btn-primary stripe-button">來去付款</button>
+      </StripeCheckout>
+      <style jsx>{`
+        .stripe-button {
+          width: 300px;
+        }
+      `}</style>
+    </>
   );
 };
 

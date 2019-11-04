@@ -19,7 +19,6 @@ const CustomButton = ({ children, inverted, purchaseBtn, ...otherProps }) => (
           background-color: black;
           color: white;
           text-transform: uppercase;
-          font-family: "Shadows Into Light", cursive;
           font-weight: bolder;
           border: none;
           cursor: pointer;

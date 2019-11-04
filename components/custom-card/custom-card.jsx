@@ -30,7 +30,7 @@ const CustomCard = props => {
               dispatch(addItem(props.item));
             }}
           >
-            Add to Cart
+            加到購物車
           </CustomButton>
         </Card.Footer>
       </Card>

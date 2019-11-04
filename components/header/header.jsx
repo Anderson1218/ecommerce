@@ -18,17 +18,7 @@ const Header = () => {
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="mr-auto">
-              <Nav.Item>
-                <Nav.Link
-                  href="https://an-store.firebaseapp.com/"
-                  target="_blank"
-                >
-                  前往後台
-                </Nav.Link>
-              </Nav.Item>
-            </Nav>
-            <Nav>
+            <Nav className="ml-auto">
               <CartDropdown />
               <Nav.Item>
                 <Nav.Link onClick={() => Router.push("/checkout")}>

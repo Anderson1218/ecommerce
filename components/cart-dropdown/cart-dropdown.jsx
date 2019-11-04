@@ -31,7 +31,7 @@ const CartDropdown = () => {
               })
             }
           >
-            CHECKOUT
+            來去結帳
           </CustomButton>
         </div>
       </NavDropdown>

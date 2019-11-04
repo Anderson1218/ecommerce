@@ -72,6 +72,18 @@ const CheckoutItem = ({ cartItem }) => {
             margin: 0 10px;
           }
 
+          @media screen and (max-width: 991px) {
+            .price {
+              display: none;
+            }
+            .remove-button {
+              display: none;
+            }
+            .quantity {
+              margin-left: 2em;
+            }
+          }
+
           .remove-button {
             padding-left: 12px;
             cursor: pointer;
