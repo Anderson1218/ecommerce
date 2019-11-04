@@ -8,8 +8,8 @@ const Header = () => {
   const [isModalOpen, setModel] = useState(false);
 
   return (
-    <div className="w-100 fixed-top">
-      <Navbar bg="light" expand="lg">
+    <div>
+      <Navbar bg="light" expand="lg" fixed="top" className="w-100">
         <Container>
           <Navbar.Brand>
             <img
