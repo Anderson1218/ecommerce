@@ -1,20 +1,24 @@
 import { useState, useContext } from "react";
 import { Form, Button } from "react-bootstrap";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import ModalContext from "../../context/modalContext";
 import { signUpStartAsync } from "../../redux/user/user.action";
+import { selectUserError } from "../../redux/user/user.selectors";
 
 const RegisterForm = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const userError = useSelector(selectUserError);
   const [password, setPassword] = useState("");
   const modalContext = useContext(ModalContext);
   const dispatch = useDispatch();
 
   const handleSubmit = async event => {
     event.preventDefault();
-    dispatch(signUpStartAsync(email, password, name));
-    modalContext.closeModal();
+    const err = await dispatch(signUpStartAsync(email, password, name));
+    if (!err) {
+      modalContext.closeModal();
+    }
   };
   return (
     <Form onSubmit={handleSubmit}>
@@ -45,12 +49,10 @@ const RegisterForm = () => {
           onChange={e => setPassword(e.target.value)}
         />
       </Form.Group>
-      <Form.Group controlId="formBasicCheckbox">
-        <Form.Check type="checkbox" label="Check me out" />
-      </Form.Group>
       <Button variant="primary" type="submit">
         Submit
       </Button>
+      {userError && <h6 className="mt-3 text-danger">{userError}</h6>}
     </Form>
   );
 };

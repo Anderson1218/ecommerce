@@ -62,6 +62,8 @@ export const getUserProfileFailure = () => ({
   type: UserActionTypes.GET_USER_PROFILE_FAILURE
 });
 
+//async action creators
+
 export const signUpStartAsync = (email, password, name) => {
   return async dispatch => {
     dispatch(signUpStart());
@@ -75,7 +77,8 @@ export const signUpStartAsync = (email, password, name) => {
       dispatch(signUpSuccess());
       dispatch(emailSignInStartAsync(email, password));
     } catch (error) {
-      dispatch(signUpFailure(error));
+      dispatch(signUpFailure(error.response.data));
+      return error;
     }
   };
 };
@@ -92,7 +95,8 @@ export const emailSignInStartAsync = (email, password) => {
       dispatch(setCurrentUser(data.user));
       dispatch(signInSuccess());
     } catch (error) {
-      dispatch(signInFailure(error));
+      dispatch(signInFailure(error.response.data));
+      return error;
     }
   };
 };
@@ -115,7 +119,8 @@ export const getUserProfileStartAsync = () => {
         dispatch(getUserProfileSuccess());
       }
     } catch (error) {
-      dispatch(getUserProfileFailure(error));
+      dispatch(getUserProfileFailure(error.response.data));
+      return error;
     }
   };
 };
