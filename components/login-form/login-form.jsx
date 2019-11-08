@@ -1,23 +1,18 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Form, Button } from "react-bootstrap";
-import axios from "axios";
-import config from "../../env-config";
+import { emailSignInStartAsync } from "../../redux/user/user.action";
+import { useDispatch } from "react-redux";
+import ModalContext from "../../context/modalContext";
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
+  const modalContext = useContext(ModalContext);
   const handleSubmit = async event => {
     event.preventDefault();
-    try {
-      const response = await axios.post(`${config.BASE_URL}/api/auth/signin`, {
-        email,
-        password
-      });
-      setEmail("");
-      setPassword("");
-    } catch (err) {
-      console.log(err);
-    }
+    dispatch(emailSignInStartAsync(email, password));
+    modalContext.closeModal();
   };
   return (
     <Form onSubmit={handleSubmit}>

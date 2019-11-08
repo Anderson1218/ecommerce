@@ -1,4 +1,6 @@
 import UserActionTypes from "./user.types";
+import axios from "axios";
+import config from "../../env-config";
 
 export const setCurrentUser = user => ({
   type: UserActionTypes.SET_CURRENT_USER,
@@ -48,50 +50,81 @@ export const signOutFailure = error => ({
   payload: error
 });
 
-// export const signUpStartAsync = (email, password, displayName) => {
-//   return async dispatch => {
-//     dispatch(signUpStart());
-//     try {
-//       const { user } = await auth.createUserWithEmailAndPassword(
-//         email,
-//         password
-//       );
-//       dispatch(signUpSuccess());
-//       await user.updateProfile({
-//         displayName: displayName,
-//         photoURL: `http://gravatar.com/avatar/${md5(user.email)}?d=identicon`
-//       });
-//       await createUserProfileDocument(user, { displayName });
-//     } catch (error) {
-//       dispatch(signUpFailure(error));
-//     }
-//   };
-// };
+export const getUserProfileStart = () => ({
+  type: UserActionTypes.GET_USER_PROFILE_START
+});
 
-// export const emailSignInStartAsync = (email, password) => {
-//   return dispatch => {
-//     dispatch(emailSignInStart());
-//     auth
-//       .signInWithEmailAndPassword(email, password)
-//       .then(user => {
-//         dispatch(signInSuccess());
-//       })
-//       .catch(error => {
-//         dispatch(signInFailure(error));
-//       });
-//   };
-// };
+export const getUserProfileSuccess = () => ({
+  type: UserActionTypes.GET_USER_PROFILE_SUCCESS
+});
 
-// export const signOutStartAsync = () => {
-//   return dispatch => {
-//     dispatch(signOutStart());
-//     auth
-//       .signOut()
-//       .then(() => {
-//         dispatch(signOutSuccess());
-//       })
-//       .catch(error => {
-//         dispatch(signOutFailure(error));
-//       });
-//   };
-// };
+export const getUserProfileFailure = () => ({
+  type: UserActionTypes.GET_USER_PROFILE_FAILURE
+});
+
+export const signUpStartAsync = (email, password, name) => {
+  return async dispatch => {
+    dispatch(signUpStart());
+    try {
+      const { data } = await axios.post(`${config.BASE_URL}/api/users`, {
+        name,
+        email,
+        password,
+        photoURL: `/profile-image.jpg`
+      });
+      dispatch(signUpSuccess());
+      dispatch(emailSignInStartAsync(email, password));
+    } catch (error) {
+      dispatch(signUpFailure(error));
+    }
+  };
+};
+
+export const emailSignInStartAsync = (email, password) => {
+  return async dispatch => {
+    dispatch(emailSignInStart());
+    try {
+      const { data } = await axios.post(`${config.BASE_URL}/api/users/token`, {
+        email,
+        password
+      });
+      localStorage.setItem("token", data.token);
+      dispatch(setCurrentUser(data.user));
+      dispatch(signInSuccess());
+    } catch (error) {
+      dispatch(signInFailure(error));
+    }
+  };
+};
+
+export const getUserProfileStartAsync = () => {
+  const token = localStorage.getItem("token");
+  return async dispatch => {
+    dispatch(getUserProfileStart());
+    try {
+      const { data: user } = await axios.get(
+        `${config.BASE_URL}/api/users/me`,
+        {
+          headers: {
+            Authorization: "Bearer " + token
+          }
+        }
+      );
+      if (user) {
+        dispatch(setCurrentUser(user));
+        dispatch(getUserProfileSuccess());
+      }
+    } catch (error) {
+      dispatch(getUserProfileFailure(error));
+    }
+  };
+};
+
+export const signOutStartAsync = () => {
+  return dispatch => {
+    dispatch(signOutStart());
+    dispatch(setCurrentUser(null));
+    localStorage.removeItem("token");
+    dispatch(signOutSuccess());
+  };
+};

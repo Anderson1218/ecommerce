@@ -1,26 +1,20 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Form, Button } from "react-bootstrap";
-import axios from "axios";
-import config from "../../env-config";
+import { useDispatch } from "react-redux";
+import ModalContext from "../../context/modalContext";
+import { signUpStartAsync } from "../../redux/user/user.action";
 
 const RegisterForm = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const modalContext = useContext(ModalContext);
+  const dispatch = useDispatch();
+
   const handleSubmit = async event => {
     event.preventDefault();
-    try {
-      const response = await axios.post(`${config.BASE_URL}/api/auth/signup`, {
-        name,
-        email,
-        password
-      });
-      setName("");
-      setEmail("");
-      setPassword("");
-    } catch (err) {
-      console.log(err);
-    }
+    dispatch(signUpStartAsync(email, password, name));
+    modalContext.closeModal();
   };
   return (
     <Form onSubmit={handleSubmit}>

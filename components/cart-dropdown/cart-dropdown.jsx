@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { selectCartItems } from "../../redux/cart/cart.selectors";
 import CustomButton from "../custom-button/custom-button";
@@ -9,9 +9,17 @@ import Router from "next/router";
 
 const CartDropdown = props => {
   const cartItems = useSelector(selectCartItems);
+  const [isOpen, setIsOpen] = useState(false);
   return (
     <>
-      <NavDropdown title={<CartIcon />} alignRight {...props}>
+      <NavDropdown
+        title={<CartIcon />}
+        alignRight
+        onMouseEnter={() => setIsOpen(true)}
+        onMouseLeave={() => setIsOpen(false)}
+        show={isOpen}
+        {...props}
+      >
         <div className="cart-dropdown">
           <div className="cart-items">
             {cartItems && cartItems.length ? (

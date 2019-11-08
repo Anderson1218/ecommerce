@@ -1,4 +1,8 @@
+const BASE_URL =
+  process.env.NODE_ENV === "production"
+    ? "https://ec-api-server.herokuapp.com"
+    : "http://localhost:8080";
+
 module.exports = {
-  // BASE_URL: "http://localhost:8080"
-  BASE_URL: "https://ec-api-server.herokuapp.com"
+  BASE_URL
 };
