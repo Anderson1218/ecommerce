@@ -1,17 +1,21 @@
 import React, { useState, useEffect } from "react";
-import { Navbar, Nav, Container } from "react-bootstrap";
+import { Navbar, Nav, Container, Spinner } from "react-bootstrap";
 import CustomModal from "../custom-modal/custom-modal";
 import CartDropdown from "../cart-dropdown/cart-dropdown";
 import UserProfileDropdown from "../user-profile-dropdown/user-profile-dropdown";
 import Router from "next/router";
 import { useSelector, useDispatch } from "react-redux";
-import { selectCurrentUser } from "../../redux/user/user.selectors";
+import {
+  selectCurrentUser,
+  selectUserIsLoading
+} from "../../redux/user/user.selectors";
 import { getUserProfileStartAsync } from "../../redux/user/user.action";
 import ModalContext from "../../context/modalContext";
 
 const Header = () => {
   const [isModalOpen, setModel] = useState(false);
   const currentUser = useSelector(selectCurrentUser);
+  const userIsLoding = useSelector(selectUserIsLoading);
   const dispatch = useDispatch();
   const closeModal = () => setModel(false);
 
@@ -45,7 +49,9 @@ const Header = () => {
                 </Nav.Link>
               </Nav.Item>
               <Nav.Item>
-                {currentUser ? (
+                {userIsLoding ? (
+                  <Spinner animation="border" />
+                ) : currentUser ? (
                   <UserProfileDropdown user={currentUser} />
                 ) : (
                   <Nav.Link onClick={() => setModel(!isModalOpen)}>
