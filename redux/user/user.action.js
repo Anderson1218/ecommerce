@@ -106,7 +106,7 @@ export const getUserProfileStartAsync = () => {
   return async dispatch => {
     dispatch(getUserProfileStart());
     try {
-      const { data: user } = await axios.get(
+      const { data: user = null } = await axios.get(
         `${config.BASE_URL}/api/users/me`,
         {
           headers: {
@@ -119,7 +119,11 @@ export const getUserProfileStartAsync = () => {
         dispatch(getUserProfileSuccess());
       }
     } catch (error) {
-      dispatch(getUserProfileFailure(error.response.data));
+      if (error && error.response) {
+        dispatch(getUserProfileFailure(error.response.data));
+      } else {
+        dispatch(getUserProfileFailure("fail to get user profile"));
+      }
       return error;
     }
   };
