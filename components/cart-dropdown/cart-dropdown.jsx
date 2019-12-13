@@ -7,7 +7,7 @@ import CartIcon from "../cart-icon/cart-icon";
 import { NavDropdown } from "react-bootstrap";
 import Router from "next/router";
 import {
-  StyledCartDropdown,
+  CartDropdownContainer,
   EmptyMessage,
   CartItemsContainer
 } from "./cart-dropdown.styles";
@@ -24,7 +24,7 @@ const CartDropdown = props => {
       show={isOpen}
       {...props}
     >
-      <StyledCartDropdown>
+      <CartDropdownContainer>
         <CartItemsContainer>
           {cartItems && cartItems.length ? (
             cartItems.map(cartItem => (
@@ -45,7 +45,7 @@ const CartDropdown = props => {
         >
           來去結帳
         </CustomButton>
-      </StyledCartDropdown>
+      </CartDropdownContainer>
     </NavDropdown>
   );
 };

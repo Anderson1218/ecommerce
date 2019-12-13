@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StyledCartDropdown = styled.div`
+export const CartDropdownContainer = styled.div`
   min-width: 240px;
   max-width: 500px;
   margin: 0 auto;

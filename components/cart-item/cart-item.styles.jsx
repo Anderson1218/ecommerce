@@ -1,13 +1,13 @@
 import styled from "styled-components";
 
-export const StyledCartItem = styled.div`
+export const CartItemContainer = styled.div`
   width: 100%;
   display: flex;
   height: 80px;
   margin-bottom: 15px;
 `;
 
-export const StyledItemDetails = styled.div`
+export const ItemDetails = styled.div`
   width: 70%;
   display: flex;
   flex-direction: column;
@@ -16,10 +16,10 @@ export const StyledItemDetails = styled.div`
   padding: 10px 20px;
 `;
 
-export const StyledName = styled.span`
+export const Name = styled.span`
   font-size: 16px;
 `;
 
-export const StyledImage = styled.img`
+export const Image = styled.img`
   width: 30%;
 `;

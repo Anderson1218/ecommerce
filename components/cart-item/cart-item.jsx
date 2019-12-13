@@ -1,20 +1,20 @@
 import {
-  StyledCartItem,
-  StyledItemDetails,
-  StyledName,
-  StyledImage
+  CartItemContainer,
+  ItemDetails,
+  Name,
+  Image
 } from "./cart-item.styles";
 
 const CartItem = ({ item: { imageUrl, price, name, quantity } }) => (
-  <StyledCartItem>
-    <StyledImage src={imageUrl} alt="item" />
-    <StyledItemDetails>
-      <StyledName>{name}</StyledName>
+  <CartItemContainer>
+    <Image src={imageUrl} alt="item" />
+    <ItemDetails>
+      <Name>{name}</Name>
       <span>
         {quantity} * ${price}
       </span>
-    </StyledItemDetails>
-  </StyledCartItem>
+    </ItemDetails>
+  </CartItemContainer>
 );
 
 export default CartItem;

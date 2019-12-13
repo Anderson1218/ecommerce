@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StyledCartIcon = styled.div`
+export const CartIconContainer = styled.div`
   width: 2.5rem;
   height: 1rem;
   position: relative;
@@ -10,7 +10,7 @@ export const StyledCartIcon = styled.div`
   cursor: pointer;
 `;
 
-export const StyledItemCount = styled.span`
+export const ItemCount = styled.span`
   position: absolute;
   font-size: 0.5rem;
   font-weight: bold;
