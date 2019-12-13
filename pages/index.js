@@ -39,7 +39,6 @@ HomePage.getInitialProps = async () => {
     const collections = response.data || {};
     return { collections };
   } catch (error) {
-    console.log("initialProps Err", error);
     return {};
   }
 };

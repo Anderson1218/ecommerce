@@ -27,7 +27,7 @@ const CollectionPage = ({ collection }) => {
           }
           .title {
             font-size: 2rem;
-            margin: 0 auto 30px;
+            margin: 20px auto;
           }
 
           .items {
