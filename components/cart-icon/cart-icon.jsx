@@ -2,34 +2,15 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { selectCartItemsCount } from "../../redux/cart/cart.selectors";
 import ShoppingIcon from "../../public/shopping-bag.svg";
+import { StyledCartIcon, StyledItemCount } from "./cart-icon.styles";
 
 const CartIcon = () => {
   const itemCount = useSelector(selectCartItemsCount);
   return (
-    <>
-      <div className="cart-icon">
-        <ShoppingIcon style={{ width: "3rem", height: "4rem" }} />
-        <span className="item-count">{itemCount || 0}</span>
-      </div>
-      <style jsx>{`
-        .cart-icon {
-          width: 2.5rem;
-          height: 1rem;
-          position: relative;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          cursor: pointer;
-        }
-        .item-count {
-          position: absolute;
-          font-size: 0.5rem;
-          font-weight: bold;
-          top: 35%;
-          color: red;
-        }
-      `}</style>
-    </>
+    <StyledCartIcon>
+      <ShoppingIcon style={{ width: "3rem", height: "4rem" }} />
+      <StyledItemCount>{itemCount || 0}</StyledItemCount>
+    </StyledCartIcon>
   );
 };
 

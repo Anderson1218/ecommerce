@@ -6,66 +6,47 @@ import CartItem from "../cart-item/cart-item";
 import CartIcon from "../cart-icon/cart-icon";
 import { NavDropdown } from "react-bootstrap";
 import Router from "next/router";
+import {
+  StyledCartDropdown,
+  EmptyMessage,
+  CartItemsContainer
+} from "./cart-dropdown.styles";
 
 const CartDropdown = props => {
   const cartItems = useSelector(selectCartItems);
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <>
-      <NavDropdown
-        title={<CartIcon />}
-        alignRight
-        onMouseEnter={() => setIsOpen(true)}
-        onMouseLeave={() => setIsOpen(false)}
-        show={isOpen}
-        {...props}
-      >
-        <div className="cart-dropdown">
-          <div className="cart-items">
-            {cartItems && cartItems.length ? (
-              cartItems.map(cartItem => (
-                <NavDropdown.Item key={cartItem.id}>
-                  <CartItem item={cartItem} />
-                </NavDropdown.Item>
-              ))
-            ) : (
-              <span className="empty-message">Your cart is empty</span>
-            )}
-          </div>
-          <CustomButton
-            onClick={() =>
-              Router.push({
-                pathname: "/checkout"
-              })
-            }
-          >
-            來去結帳
-          </CustomButton>
-        </div>
-      </NavDropdown>
-      <style jsx>{`
-        .cart-dropdown {
-          min-width: 240px;
-          max-width: 500px;
-          margin: 0 auto;
-          display: flex;
-          flex-direction: column;
-          padding: 20px;
-          background-color: white;
-        }
-        .empty-message {
-          font-size: 1.2rem;
-          margin: 25% auto;
-        }
-
-        .cart-items {
-          height: 240px;
-          display: flex;
-          flex-direction: column;
-          overflow: scroll;
-        }
-      `}</style>
-    </>
+    <NavDropdown
+      title={<CartIcon />}
+      alignRight
+      onMouseEnter={() => setIsOpen(true)}
+      onMouseLeave={() => setIsOpen(false)}
+      show={isOpen}
+      {...props}
+    >
+      <StyledCartDropdown>
+        <CartItemsContainer>
+          {cartItems && cartItems.length ? (
+            cartItems.map(cartItem => (
+              <NavDropdown.Item key={cartItem.id}>
+                <CartItem item={cartItem} />
+              </NavDropdown.Item>
+            ))
+          ) : (
+            <EmptyMessage>Your cart is empty</EmptyMessage>
+          )}
+        </CartItemsContainer>
+        <CustomButton
+          onClick={() =>
+            Router.push({
+              pathname: "/checkout"
+            })
+          }
+        >
+          來去結帳
+        </CustomButton>
+      </StyledCartDropdown>
+    </NavDropdown>
   );
 };
 
