@@ -1,21 +1,14 @@
 import React from "react";
+import { Overview } from "./collections-overview-styles";
 import CollectionPreview from "../collection-preview/collection-preview";
 
 const CollectionsOverview = ({ collections }) => (
-  <div className="collections-overview">
+  <Overview>
     {collections &&
       collections.map(({ id, ...otherCollectionProps }) => (
         <CollectionPreview key={id} {...otherCollectionProps} />
       ))}
-    <style jsx>
-      {`
-        .collections-overview {
-          display: flex;
-          flex-direction: column;
-        }
-      `}
-    </style>
-  </div>
+  </Overview>
 );
 
 export default CollectionsOverview;

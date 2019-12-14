@@ -42,6 +42,7 @@ const CartDropdown = props => {
               pathname: "/checkout"
             })
           }
+          inverted
         >
           來去結帳
         </CustomButton>

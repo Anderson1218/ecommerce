@@ -1,12 +1,12 @@
 import React from "react";
-import CustomCard from "../custom-card/custom-card";
-import Link from "next/link";
 import {
   PreviewContainer,
   Preview,
   Item,
   Title
 } from "./collection-preview.styles";
+import CustomCard from "../custom-card/custom-card";
+import Link from "next/link";
 
 const CollectionPreview = ({ title, items, routeName }) => (
   <PreviewContainer>
