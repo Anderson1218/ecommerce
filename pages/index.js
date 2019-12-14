@@ -1,10 +1,15 @@
 import React from "react";
+import styled from "styled-components";
 import { Container, Row, Col } from "react-bootstrap";
 import CollectionOverview from "../components/collections-overview/collections-overview";
 import CustomCarousel from "../components/custom-carousel/custom-carousel";
 import Head from "next/head";
 import axios from "axios";
 import config from "../env-config";
+
+const StyledContainer = styled(Container)`
+  margin-top: 1.5rem;
+`;
 
 const HomePage = ({ collections }) => {
   const collectionsArray = collections
@@ -16,20 +21,20 @@ const HomePage = ({ collections }) => {
     "https://png.pngtree.com/thumb_back/fw800/back_our/20190621/ourmid/pngtree-girls--day-queen-s-day-shopping-background-image_199961.jpg"
   ];
   return (
-    <div>
+    <>
       <Head>
-        <title>Home</title>
+        <title>HomePage</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <CustomCarousel imageUrls={imageUrls} />
-      <Container className="mt-5">
+      <StyledContainer>
         <Row>
           <Col>
             <CollectionOverview collections={collectionsArray} />
           </Col>
         </Row>
-      </Container>
-    </div>
+      </StyledContainer>
+    </>
   );
 };
 

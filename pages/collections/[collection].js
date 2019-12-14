@@ -1,7 +1,34 @@
 import React from "react";
+import styled from "styled-components";
 import CustomCard from "../../components/custom-card/custom-card";
 import axios from "axios";
 import config from "../../env-config";
+
+const StyledCollectionPage = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+const Title = styled.h2`
+  font-size: 2rem;
+  margin: 20px auto;
+`;
+
+const Items = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  justify-items: center;
+  grid-gap: 20px 20px;
+  @media screen and (max-width: 1199px) {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  @media screen and (max-width: 991px) {
+    grid-template-columns: 1fr 1fr;
+  }
+  @media screen and (max-width: 766px) {
+    grid-template-columns: 1fr;
+  }
+`;
 
 const CollectionPage = ({ collection }) => {
   if (!collection) {
@@ -10,59 +37,14 @@ const CollectionPage = ({ collection }) => {
   const { title, items } = collection;
 
   return (
-    <div>
-      <div className="collection-page">
-        <h2 className="title">{title}</h2>
-        <div className="items">
-          {items.map(item => (
-            <CustomCard key={item.id} item={item} />
-          ))}
-        </div>
-      </div>
-      <style jsx>
-        {`
-          .collection-page {
-            display: flex;
-            flex-direction: column;
-          }
-          .title {
-            font-size: 2rem;
-            margin: 20px auto;
-          }
-
-          .items {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr 1fr;
-            justify-items: center;
-            grid-gap: 20px 20px;
-          }
-          @media screen and (max-width: 1199px) {
-            .items {
-              display: grid;
-              grid-template-columns: 1fr 1fr 1fr;
-              justify-items: center;
-              grid-gap: 20px 20px;
-            }
-          }
-          @media screen and (max-width: 991px) {
-            .items {
-              display: grid;
-              grid-template-columns: 1fr 1fr;
-              justify-items: center;
-              grid-gap: 20px 20px;
-            }
-          }
-          @media screen and (max-width: 766px) {
-            .items {
-              display: grid;
-              grid-template-columns: 1fr;
-              justify-items: center;
-              grid-gap: 20px 20px;
-            }
-          }
-        `}
-      </style>
-    </div>
+    <StyledCollectionPage>
+      <Title>{title}</Title>
+      <Items>
+        {items.map(item => (
+          <CustomCard key={item.id} item={item} />
+        ))}
+      </Items>
+    </StyledCollectionPage>
   );
 };
 
