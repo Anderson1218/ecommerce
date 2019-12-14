@@ -1,6 +1,5 @@
 import React from "react";
 import StripeCheckout from "react-stripe-checkout";
-import { Button } from "react-bootstrap";
 import { clearAllItemsFromCart } from "../../redux/cart/cart.actions";
 import { useDispatch } from "react-redux";
 

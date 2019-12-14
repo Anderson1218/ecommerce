@@ -1,9 +1,10 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { Modal, Button } from "react-bootstrap";
+import { Modal } from "react-bootstrap";
 import LoginForm from "../login-form/login-form";
 import RegisterForm from "../register-form/register-form";
 import { clearErrorInfo } from "../../redux/user/user.action";
+import CustomButton from "../custom-button/custom-button";
 
 function CustomModal(props) {
   const [showLoginForm, setIsLogin] = useState(true);
@@ -25,15 +26,18 @@ function CustomModal(props) {
         {showLoginForm ? <LoginForm /> : <RegisterForm />}
       </Modal.Body>
       <Modal.Footer>
-        <Button
+        <CustomButton
           onClick={() => {
             setIsLogin(!showLoginForm);
             dispatch(clearErrorInfo());
           }}
+          inverted
         >
           {showLoginForm ? "快速註冊" : "已有帳號"}
-        </Button>
-        <Button onClick={props.onHide}>Close</Button>
+        </CustomButton>
+        <CustomButton inverted onClick={props.onHide}>
+          Close
+        </CustomButton>
       </Modal.Footer>
     </Modal>
   );

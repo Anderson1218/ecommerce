@@ -1,22 +1,14 @@
 import React from "react";
+import { PageWrapper } from "./layout.styles";
 import Header from "../header/header";
 import { withRedux } from "../../redux/with-redux";
 
 const Layout = ({ children }) => {
   return (
-    <>
+    <div>
       <Header />
-      <div className="page-wrapper">{children}</div>
-      <style jsx>
-        {`
-          .page-wrapper {
-            display: flex;
-            flex-direction: column;
-            margin-top: 4rem;
-          }
-        `}
-      </style>
-    </>
+      <PageWrapper>{children}</PageWrapper>
+    </div>
   );
 };
 

@@ -1,5 +1,7 @@
-import { useState, useContext } from "react";
-import { Form, Button } from "react-bootstrap";
+import React, { useState, useContext } from "react";
+import { Text } from "./login-form.styles";
+import { Form } from "react-bootstrap";
+import CustomButton from "../custom-button/custom-button";
 import { emailSignInStartAsync } from "../../redux/user/user.action";
 import { useSelector, useDispatch } from "react-redux";
 import ModalContext from "../../context/modalContext";
@@ -38,10 +40,10 @@ const LoginForm = () => {
           onChange={e => setPassword(e.target.value)}
         />
       </Form.Group>
-      <Button variant="primary" type="submit">
+      <CustomButton inverted type="submit">
         Submit
-      </Button>
-      {userError && <h6 className="mt-3 text-danger">{userError}</h6>}
+      </CustomButton>
+      {userError && <Text>{userError}</Text>}
     </Form>
   );
 };
