@@ -43,7 +43,7 @@ const LoginForm = () => {
       <CustomButton inverted type="submit">
         Submit
       </CustomButton>
-      {userError && <Text>{userError}</Text>}
+      {userError && <Text>登入失敗</Text>}
     </Form>
   );
 };

@@ -54,7 +54,7 @@ const RegisterForm = () => {
       <CustomButton inverted type="submit">
         Submit
       </CustomButton>
-      {userError && <Text>{userError}</Text>}
+      {userError && <Text>註冊失敗</Text>}
     </Form>
   );
 };

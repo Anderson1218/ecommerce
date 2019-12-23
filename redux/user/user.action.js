@@ -68,16 +68,17 @@ export const signUpStartAsync = (email, password, name) => {
   return async dispatch => {
     dispatch(signUpStart());
     try {
-      const { data } = await axios.post(`${config.BASE_URL}/api/users`, {
+      const { data } = await axios.post(`${config.AUTH_SERVER_URL}/api/users`, {
         name,
         email,
-        password,
-        photoURL: `/profile-image.jpg`
+        password
+        // photoURL: `/profile-image.jpg`
       });
       dispatch(signUpSuccess());
       dispatch(emailSignInStartAsync(email, password));
     } catch (error) {
-      dispatch(signUpFailure(error.response.data));
+      //dispatch(signUpFailure(error.response.data));
+      dispatch(signUpFailure(error));
       return error;
     }
   };
@@ -87,15 +88,20 @@ export const emailSignInStartAsync = (email, password) => {
   return async dispatch => {
     dispatch(emailSignInStart());
     try {
-      const { data } = await axios.post(`${config.BASE_URL}/api/users/token`, {
-        email,
-        password
-      });
+      const { data } = await axios.post(
+        `${config.AUTH_SERVER_URL}/api/users/token`,
+        {
+          email,
+          password
+        }
+      );
       localStorage.setItem("token", data.token);
-      dispatch(setCurrentUser(data.user));
+      await dispatch(getUserProfileStartAsync());
+      // dispatch(setCurrentUser(data.user));
       dispatch(signInSuccess());
     } catch (error) {
-      dispatch(signInFailure(error.response.data));
+      //dispatch(signInFailure(error.response.data));
+      dispatch(signInFailure(error));
       return error;
     }
   };
@@ -107,7 +113,7 @@ export const getUserProfileStartAsync = () => {
     dispatch(getUserProfileStart());
     try {
       const { data: user = null } = await axios.get(
-        `${config.BASE_URL}/api/users/me`,
+        `${config.AUTH_SERVER_URL}/api/users/me`,
         {
           headers: {
             Authorization: "Bearer " + token
@@ -120,7 +126,8 @@ export const getUserProfileStartAsync = () => {
       }
     } catch (error) {
       if (error && error.response) {
-        dispatch(getUserProfileFailure(error.response.data));
+        //dispatch(getUserProfileFailure(error.response.data));
+        dispatch(getUserProfileFailure(error));
       } else {
         dispatch(getUserProfileFailure("fail to get user profile"));
       }
