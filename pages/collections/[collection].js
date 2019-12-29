@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import CustomCard from "../../components/custom-card/custom-card";
+import Card from "../../components/card/card";
 import axios from "axios";
 import config from "../../env-config";
 
@@ -41,7 +41,7 @@ const CollectionPage = ({ collection }) => {
       <Title>{title}</Title>
       <Items>
         {items.map(item => (
-          <CustomCard key={item.id} item={item} />
+          <Card key={item.id} item={item} />
         ))}
       </Items>
     </StyledCollectionPage>

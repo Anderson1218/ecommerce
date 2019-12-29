@@ -5,7 +5,7 @@ import {
   Item,
   Title
 } from "./collection-preview.styles";
-import CustomCard from "../custom-card/custom-card";
+import Card from "../card/card";
 import Link from "next/link";
 
 const CollectionPreview = ({ title, items, routeName }) => (
@@ -18,7 +18,7 @@ const CollectionPreview = ({ title, items, routeName }) => (
         .filter((item, idx) => idx < 4)
         .map(item => (
           <Item key={item.id}>
-            <CustomCard item={item} />
+            <Card item={item} />
           </Item>
         ))}
     </Preview>

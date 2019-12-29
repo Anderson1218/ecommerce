@@ -1,8 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { Navbar, Nav, Container, Spinner } from "react-bootstrap";
-import CustomModal from "../custom-modal/custom-modal";
-import CartDropdown from "../cart-dropdown/cart-dropdown";
-import UserProfileDropdown from "../user-profile-dropdown/user-profile-dropdown";
 import Router from "next/router";
 import { useSelector, useDispatch } from "react-redux";
 import {
@@ -11,6 +7,11 @@ import {
 } from "../../redux/user/user.selectors";
 import { getUserProfileStartAsync } from "../../redux/user/user.action";
 import ModalContext from "../../context/modalContext";
+import CartDropdown from "../cart-dropdown/cart-dropdown";
+import UserProfileDropdown from "../user-profile-dropdown/user-profile-dropdown";
+
+import { Navbar, Nav, Container, Spinner } from "react-bootstrap";
+import CustomModal from "../custom-modal/custom-modal";
 
 const Header = () => {
   const [isModalOpen, setModel] = useState(false);

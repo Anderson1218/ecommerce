@@ -1,6 +1,12 @@
 import React from "react";
 import App from "next/app";
-import Layout from "../components/layout/layout";
+import { Grommet } from "grommet";
+import { GlobalStyles } from "../globalStyles";
+import { initializeStore } from "../redux/store";
+import { Provider } from "react-redux";
+import Header from "../components/header/header";
+import withRedux from "next-redux-wrapper";
+
 import "bootstrap/dist/css/bootstrap.min.css";
 
 class MyApp extends App {
@@ -17,13 +23,17 @@ class MyApp extends App {
   // }
 
   render() {
-    const { Component, pageProps } = this.props;
+    const { Component, pageProps, store } = this.props;
     return (
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
+      <Provider store={store}>
+        <Grommet full>
+          <GlobalStyles />
+          <Header />
+          <Component {...pageProps} />
+        </Grommet>
+      </Provider>
     );
   }
 }
 
-export default MyApp;
+export default withRedux(initializeStore, { debug: true })(MyApp);
