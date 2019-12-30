@@ -1,81 +1,72 @@
-import React, { useState, useEffect } from "react";
-import Router from "next/router";
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import Router from "next/router";
+import { StyledHeading } from "./header.styles";
+
+import { emailSignInStartAsync } from "../../redux/user/user.action";
+import { signUpStartAsync } from "../../redux/user/user.action";
+import { selectUserError } from "../../redux/user/user.selectors";
 import {
   selectCurrentUser,
   selectUserIsLoading
 } from "../../redux/user/user.selectors";
-import { getUserProfileStartAsync } from "../../redux/user/user.action";
-import ModalContext from "../../context/modalContext";
-import CartDropdown from "../cart-dropdown/cart-dropdown";
-import UserProfileDropdown from "../user-profile-dropdown/user-profile-dropdown";
 
-import { Navbar, Nav, Container, Spinner } from "react-bootstrap";
-import CustomModal from "../custom-modal/custom-modal";
+import Modal from "../modal/modal";
+import LoginSignupForm from "../loginSignupForm/loginSignupForm";
+import { toggleTheme } from "../../redux/theme/theme.action";
+import { Box, Button } from "grommet";
+import { User, Cycle, Currency } from "grommet-icons";
+import CartDropdown from "../cart-dropdown/cart-dropdown";
 
 const Header = () => {
   const [isModalOpen, setModel] = useState(false);
   const currentUser = useSelector(selectCurrentUser);
   const userIsLoding = useSelector(selectUserIsLoading);
+  const userError = useSelector(selectUserError);
   const dispatch = useDispatch();
   const closeModal = () => setModel(false);
 
-  useEffect(() => {
-    dispatch(getUserProfileStartAsync());
-  }, []);
+  const handleSubmit = async (e, values, isLogin) => {
+    e.preventDefault();
+    const { email, password, name } = values;
+    if (isLogin) {
+      const err = await dispatch(emailSignInStartAsync(email, password));
+      if (!err) {
+        closeModal();
+      }
+    } else {
+      const err = await dispatch(signUpStartAsync(email, password, name));
+      if (!err) {
+        closeModal();
+      }
+    }
+  };
 
   return (
-    <div>
-      <Navbar bg="light" expand="lg" fixed="top" className="w-100">
-        <Container>
-          <Navbar.Brand>
-            <img
-              alt=""
-              src="/logo.png"
-              width="50"
-              height="40"
-              className="d-inline-block align-top brand-image"
-              onClick={() => Router.push("/")}
-            />
-          </Navbar.Brand>
-          <div className="d-flex flex-grow-1 justify-content-end">
-            <CartDropdown />
-            <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          </div>
-          <Navbar.Collapse id="basic-navbar-nav" className="flex-grow-0">
-            <Nav className="align-items-center">
-              <Nav.Item>
-                <Nav.Link onClick={() => Router.push("/checkout")}>
-                  來去結帳
-                </Nav.Link>
-              </Nav.Item>
-              <Nav.Item>
-                {userIsLoding ? (
-                  <Spinner animation="border" />
-                ) : currentUser ? (
-                  <UserProfileDropdown user={currentUser} />
-                ) : (
-                  <Nav.Link onClick={() => setModel(!isModalOpen)}>
-                    登入
-                  </Nav.Link>
-                )}
-              </Nav.Item>
-            </Nav>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
-      <ModalContext.Provider value={{ closeModal }}>
-        <CustomModal show={isModalOpen} onHide={closeModal} />
-      </ModalContext.Provider>
-      <style>{`
-        .dropdown-toggle::after {
-          display: none !important;
-        }
-        .brand-image:hover {
-          cursor: pointer;
-        }
-      `}</style>
-    </div>
+    <Box
+      as="header"
+      direction="row"
+      align="center"
+      justify="between"
+      // background="brand"
+      pad={{ left: "medium", right: "small", vertical: "small" }}
+      elevation="medium"
+    >
+      <StyledHeading level="3" margin="none" onClick={() => Router.push("/")}>
+        <img alt="" src="/logo.png" width="50" height="40" />
+      </StyledHeading>
+      <Box direction="row">
+        <CartDropdown />
+        <Button icon={<Currency />} onClick={() => Router.push("/checkout")} />
+        <Button icon={<Cycle />} onClick={() => dispatch(toggleTheme())} />
+        <Button icon={<User />} onClick={() => setModel(!isModalOpen)} />
+      </Box>
+      {isModalOpen && (
+        <Modal onEsc={closeModal} onClickOutside={closeModal}>
+          <LoginSignupForm handleSubmit={handleSubmit} error={userError} />
+        </Modal>
+      )}
+    </Box>
   );
 };
 

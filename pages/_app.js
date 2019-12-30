@@ -7,7 +7,7 @@ import { Provider } from "react-redux";
 import Header from "../components/header/header";
 import withRedux from "next-redux-wrapper";
 
-import "bootstrap/dist/css/bootstrap.min.css";
+// import "bootstrap/dist/css/bootstrap.min.css";
 
 class MyApp extends App {
   // Only uncomment this method if you have blocking data requirements for
