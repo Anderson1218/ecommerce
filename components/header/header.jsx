@@ -1,22 +1,22 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import Router from "next/router";
-import { StyledHeading } from "./header.styles";
-
 import { emailSignInStartAsync } from "../../redux/user/user.action";
 import { signUpStartAsync } from "../../redux/user/user.action";
+import { toggleTheme } from "../../redux/theme/theme.action";
 import { selectUserError } from "../../redux/user/user.selectors";
 import {
   selectCurrentUser,
   selectUserIsLoading
 } from "../../redux/user/user.selectors";
+import Router from "next/router";
 
-import Modal from "../modal/modal";
-import LoginSignupForm from "../loginSignupForm/loginSignupForm";
-import { toggleTheme } from "../../redux/theme/theme.action";
 import { Box, Button } from "grommet";
 import { User, Cycle, Currency } from "grommet-icons";
+import { StyledHeading } from "./header.styles";
+import Modal from "../modal/modal";
+import LoginSignupForm from "../loginSignupForm/loginSignupForm";
 import CartDropdown from "../cart-dropdown/cart-dropdown";
+import UserProfileDropdown from "../user-profile-dropdown/user-profile-dropdown";
 
 const Header = () => {
   const [isModalOpen, setModel] = useState(false);
@@ -59,7 +59,11 @@ const Header = () => {
         <CartDropdown />
         <Button icon={<Currency />} onClick={() => Router.push("/checkout")} />
         <Button icon={<Cycle />} onClick={() => dispatch(toggleTheme())} />
-        <Button icon={<User />} onClick={() => setModel(!isModalOpen)} />
+        {currentUser ? (
+          <UserProfileDropdown user={currentUser} />
+        ) : (
+          <Button icon={<User />} onClick={() => setModel(!isModalOpen)} />
+        )}
       </Box>
       {isModalOpen && (
         <Modal onEsc={closeModal} onClickOutside={closeModal}>

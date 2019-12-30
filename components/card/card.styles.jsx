@@ -4,7 +4,7 @@ export const CardWrapper = styled.div`
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
   transition: box-shadow 0.7s;
   width: 300px;
-  height: 500px;
+  height: 530px;
   &:hover {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
   }
