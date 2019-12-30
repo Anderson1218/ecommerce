@@ -30,7 +30,7 @@ const HomePage = ({ collections }) => {
       <Box height="large" fill="horizontal" overflow="hidden">
         <Carousel fill>
           {imageUrls.map(image => (
-            <Image fill src={image} />
+            <Image fill src={image} key={image} />
           ))}
         </Carousel>
       </Box>

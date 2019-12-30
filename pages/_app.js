@@ -6,8 +6,8 @@ import { initializeStore } from "../redux/store";
 import { Provider } from "react-redux";
 import Header from "../components/header/header";
 import withRedux from "next-redux-wrapper";
-
-// import "bootstrap/dist/css/bootstrap.min.css";
+import lightTheme from "../theme/lightTheme";
+import darkTheme from "../theme/darkTheme";
 
 class MyApp extends App {
   // Only uncomment this method if you have blocking data requirements for
@@ -26,7 +26,7 @@ class MyApp extends App {
     const { Component, pageProps, store } = this.props;
     return (
       <Provider store={store}>
-        <Grommet full>
+        <Grommet theme={lightTheme} full>
           <GlobalStyles />
           <Header />
           <Component {...pageProps} />
