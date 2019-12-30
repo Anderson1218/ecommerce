@@ -12,9 +12,9 @@ const StyledBox = styled(Box)`
 
 //fake data
 const imageUrls = [
-  "https://png.pngtree.com/thumb_back/fw800/back_our/20190620/ourmid/pngtree-you-shop-me-buy-a-shopping-mall-promotion-poster-background-material-image_148388.jpg",
-  "https://png.pngtree.com/thumb_back/fw800/back_our/20190620/ourmid/pngtree-fashion-women-s-products-investment-joining-poster-background-material-image_161486.jpg",
-  "https://png.pngtree.com/thumb_back/fw800/back_our/20190621/ourmid/pngtree-girls--day-queen-s-day-shopping-background-image_199961.jpg"
+  "https://attach.setn.com/newsimages/2018/02/06/1241730-XXL.jpg",
+  "https://attach.setn.com/newsimages/2018/02/06/1241732-PH.jpg",
+  "https://www.kpopn.com/upload/2018/07/20180718-2018Nominations-100MostHandsomeBeautifulFaces-thumb2.jpg"
 ];
 
 const HomePage = ({ collections }) => {

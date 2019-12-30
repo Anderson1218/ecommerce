@@ -78,7 +78,7 @@ export const signUpStartAsync = (email, password, name) => {
       dispatch(emailSignInStartAsync(email, password));
     } catch (error) {
       //dispatch(signUpFailure(error.response.data));
-      dispatch(signUpFailure(error));
+      dispatch(signUpFailure("Register fail"));
       return error;
     }
   };
@@ -101,7 +101,7 @@ export const emailSignInStartAsync = (email, password) => {
       dispatch(signInSuccess());
     } catch (error) {
       //dispatch(signInFailure(error.response.data));
-      dispatch(signInFailure(error));
+      dispatch(signInFailure("Login Fail"));
       return error;
     }
   };

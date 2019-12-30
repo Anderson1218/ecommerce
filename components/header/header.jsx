@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { emailSignInStartAsync } from "../../redux/user/user.action";
-import { signUpStartAsync } from "../../redux/user/user.action";
+import {
+  emailSignInStartAsync,
+  signUpStartAsync,
+  clearErrorInfo
+} from "../../redux/user/user.action";
 import { toggleTheme } from "../../redux/theme/theme.action";
 import { selectUserError } from "../../redux/user/user.selectors";
 import {
@@ -19,12 +22,16 @@ import CartDropdown from "../cart-dropdown/cart-dropdown";
 import UserProfileDropdown from "../user-profile-dropdown/user-profile-dropdown";
 
 const Header = () => {
+  const dispatch = useDispatch();
   const [isModalOpen, setModel] = useState(false);
   const currentUser = useSelector(selectCurrentUser);
   const userIsLoding = useSelector(selectUserIsLoading);
   const userError = useSelector(selectUserError);
-  const dispatch = useDispatch();
-  const closeModal = () => setModel(false);
+  const closeModal = () => {
+    dispatch(clearErrorInfo());
+    setModel(false);
+  };
+  const dispatchClearError = () => dispatch(clearErrorInfo());
 
   const handleSubmit = async (e, values, isLogin) => {
     e.preventDefault();
@@ -58,7 +65,7 @@ const Header = () => {
       <Box direction="row">
         <CartDropdown />
         <Button icon={<Currency />} onClick={() => Router.push("/checkout")} />
-        <Button icon={<Cycle />} onClick={() => dispatch(toggleTheme())} />
+        {/* <Button icon={<Cycle />} onClick={() => dispatch(toggleTheme())} /> */}
         {currentUser ? (
           <UserProfileDropdown user={currentUser} />
         ) : (
@@ -67,7 +74,11 @@ const Header = () => {
       </Box>
       {isModalOpen && (
         <Modal onEsc={closeModal} onClickOutside={closeModal}>
-          <LoginSignupForm handleSubmit={handleSubmit} error={userError} />
+          <LoginSignupForm
+            handleSubmit={handleSubmit}
+            error={userError}
+            clearErrorInfo={dispatchClearError}
+          />
         </Modal>
       )}
     </Box>

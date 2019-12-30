@@ -1,9 +1,10 @@
 import React from "react";
 import { useState } from "react";
 import { Form, FormField, Button, Box, TextInput, Text } from "grommet";
+import { CaretNext } from "grommet-icons";
 import { ButtonGroup } from "./login-signup-form.styles";
 
-const LoginSignupForm = ({ handleSubmit, error }) => {
+const LoginSignupForm = ({ handleSubmit, clearErrorInfo, error }) => {
   const [isLogin, setLogin] = useState(true);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -43,19 +44,18 @@ const LoginSignupForm = ({ handleSubmit, error }) => {
           />
         </FormField>
         <ButtonGroup direction="row" justify="around">
-          <Button
-            type="submit"
-            label={isLogin ? "Login Now" : "Register Now"}
-          />
+          <Button type="submit" label={isLogin ? "Login" : "Register"} />
           <Button
             label={isLogin ? "To Register" : "To Login"}
             onClick={() => {
               resetFields();
               setLogin(!isLogin);
+              clearErrorInfo();
             }}
+            icon={<CaretNext />}
           />
         </ButtonGroup>
-        {error && <Text>登入失敗</Text>}
+        {error && <Text color="status-error">{error}</Text>}
       </Form>
     </Box>
   );

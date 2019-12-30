@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const CartDropdownContainer = styled.div`
   min-width: 240px;
-  max-width: 500px;
+  max-width: 300px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
