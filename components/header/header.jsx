@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
   emailSignInStartAsync,
   signUpStartAsync,
+  getUserProfileStartAsync,
   clearErrorInfo
 } from "../../redux/user/user.action";
 import { toggleTheme } from "../../redux/theme/theme.action";
@@ -20,10 +21,16 @@ import Modal from "../modal/modal";
 import LoginSignupForm from "../login-signup-form/login-signup-form";
 import CartDropdown from "../cart-dropdown/cart-dropdown";
 import UserProfileDropdown from "../user-profile-dropdown/user-profile-dropdown";
+import Spinner from "../spinner/spinner";
 
 const Header = () => {
   const dispatch = useDispatch();
   const [isModalOpen, setModel] = useState(false);
+
+  useEffect(() => {
+    dispatch(getUserProfileStartAsync());
+  }, []);
+
   const currentUser = useSelector(selectCurrentUser);
   const userIsLoding = useSelector(selectUserIsLoading);
   const userError = useSelector(selectUserError);
@@ -66,7 +73,9 @@ const Header = () => {
         <CartDropdown />
         <Button icon={<Currency />} onClick={() => Router.push("/checkout")} />
         {/* <Button icon={<Cycle />} onClick={() => dispatch(toggleTheme())} /> */}
-        {currentUser ? (
+        {userIsLoding ? (
+          <Spinner />
+        ) : currentUser ? (
           <UserProfileDropdown user={currentUser} />
         ) : (
           <Button icon={<User />} onClick={() => setModel(!isModalOpen)} />
