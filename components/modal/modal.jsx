@@ -1,14 +1,14 @@
 import React from "react";
 import { Box, Layer, Heading, Select, Button } from "grommet";
 
-function Modal(props) {
-  const { children, onEsc, onClickOutside } = props;
+function Modal({ children, onEsc, onClickOutside, ...props }) {
   return (
     <Layer
       position="center"
       modal
       onEsc={onEsc}
       onClickOutside={onClickOutside}
+      {...props}
     >
       <Box pad="medium" gap="small" width="medium">
         <Heading level={3} margin="none">

@@ -73,7 +73,11 @@ const Header = () => {
         )}
       </Box>
       {isModalOpen && (
-        <Modal onEsc={closeModal} onClickOutside={closeModal}>
+        <Modal
+          onEsc={closeModal}
+          onClickOutside={closeModal}
+          responsive={false}
+        >
           <LoginSignupForm
             handleSubmit={handleSubmit}
             error={userError}
