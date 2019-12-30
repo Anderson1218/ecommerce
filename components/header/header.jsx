@@ -14,7 +14,7 @@ import { Box, Button } from "grommet";
 import { User, Cycle, Currency } from "grommet-icons";
 import { StyledHeading } from "./header.styles";
 import Modal from "../modal/modal";
-import LoginSignupForm from "../loginSignupForm/loginSignupForm";
+import LoginSignupForm from "../login-signup-form/login-signup-form";
 import CartDropdown from "../cart-dropdown/cart-dropdown";
 import UserProfileDropdown from "../user-profile-dropdown/user-profile-dropdown";
 

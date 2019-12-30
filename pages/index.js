@@ -27,7 +27,7 @@ const HomePage = ({ collections }) => {
         <title>HomePage</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Box height="large" fill="horizontal" overflow="hidden">
+      <Box height="medium" fill="horizontal" overflow="hidden">
         <Carousel fill>
           {imageUrls.map(image => (
             <Image fill src={image} key={image} />

@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { Form, FormField, Button, Box, TextInput, Text } from "grommet";
-import { ButtonGroup } from "./loginSignupForm.styles";
+import { ButtonGroup } from "./login-signup-form.styles";
 
 const LoginSignupForm = ({ handleSubmit, error }) => {
   const [isLogin, setLogin] = useState(true);
