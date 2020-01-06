@@ -21,7 +21,7 @@ import Modal from "../modal/modal";
 import LoginSignupForm from "../login-signup-form/login-signup-form";
 import CartDropdown from "../cart-dropdown/cart-dropdown";
 import UserProfileDropdown from "../user-profile-dropdown/user-profile-dropdown";
-import Spinner from "../spinner/spinner";
+import { DualRing } from "react-awesome-spinners";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -65,6 +65,7 @@ const Header = () => {
       // background="brand"
       pad={{ left: "medium", right: "small", vertical: "small" }}
       elevation="medium"
+      height={{ max: "70px" }}
     >
       <Box direction="row" align="center">
         <StyledHeading level="3" margin="none" onClick={() => Router.push("/")}>
@@ -78,12 +79,16 @@ const Header = () => {
           color="black"
         ></Anchor>
       </Box>
-      <Box direction="row">
-        <CartDropdown />
+      <Box direction="row" height={{ max: "40px" }}>
+        <Box width={{ min: "40px" }} height={{ min: "30px" }}>
+          <CartDropdown />
+        </Box>
         <Button icon={<Currency />} onClick={() => Router.push("/checkout")} />
         {/* <Button icon={<Cycle />} onClick={() => dispatch(toggleTheme())} /> */}
         {userIsLoding ? (
-          <Spinner />
+          <Box justify="center" width={{ max: "25px" }}>
+            <DualRing size="30" />
+          </Box>
         ) : currentUser ? (
           <UserProfileDropdown user={currentUser} />
         ) : (
