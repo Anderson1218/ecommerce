@@ -25,7 +25,7 @@ const CartDropdown = () => {
     <Stack anchor="top-right">
       <DropButton
         icon={<Cart />}
-        dropAlign={{ top: "bottom", right: "right" }}
+        dropAlign={{ top: "bottom", center: "center" }}
         dropContent={
           <CartDropdownContainer>
             <CartItemsContainer>
