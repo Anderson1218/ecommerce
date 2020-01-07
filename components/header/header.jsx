@@ -63,7 +63,7 @@ const Header = () => {
       align="center"
       justify="between"
       // background="brand"
-      pad={{ left: "medium", right: "small", vertical: "small" }}
+      pad={{ left: "xlarge", right: "xlarge", vertical: "small" }}
       elevation="medium"
       height={{ max: "70px" }}
     >

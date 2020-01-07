@@ -12,9 +12,9 @@ const StyledBox = styled(Box)`
 
 //fake data
 const imageUrls = [
-  "https://attach.setn.com/newsimages/2018/02/06/1241730-XXL.jpg",
-  "https://attach.setn.com/newsimages/2018/02/06/1241732-PH.jpg",
-  "https://www.kpopn.com/upload/2018/07/20180718-2018Nominations-100MostHandsomeBeautifulFaces-thumb2.jpg"
+  "https://previews.123rf.com/images/gregorylee/gregorylee1601/gregorylee160100109/50537707-colorful-women-s-dresses-on-hangers-in-a-retail-shop-fashion-and-shopping-concept-toned-picture.jpg",
+  "https://previews.123rf.com/images/viewapart/viewapart1407/viewapart140700014/30360720-young-beautiful-women-at-the-weekly-cloth-market-best-friends-sharing-free-time-having-fun-and-shopp.jpg",
+  "https://previews.123rf.com/images/ollinka/ollinka1804/ollinka180400051/100550511-jeans-stacked-on-a-wooden-background.jpg"
 ];
 
 const HomePage = ({ collections }) => {
@@ -27,8 +27,8 @@ const HomePage = ({ collections }) => {
         <title>HomePage</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Box height="medium" fill="horizontal" overflow="hidden">
-        <Carousel fill>
+      <Box height="512px" fill="horizontal" overflow="hidden">
+        <Carousel fill play={2500}>
           {imageUrls.map(image => (
             <Image fill src={image} key={image} />
           ))}
