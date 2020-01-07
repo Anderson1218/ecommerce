@@ -9,7 +9,7 @@ const Card = props => {
   const dispatch = useDispatch();
   return (
     <CardWrapper>
-      <Box align="center" justify="center" margin="xsmall">
+      <Box align="center" justify="center">
         <ImageWrapper>
           <Image src={imageUrl}></Image>
         </ImageWrapper>

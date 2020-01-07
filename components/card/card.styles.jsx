@@ -4,7 +4,6 @@ export const CardWrapper = styled.div`
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
   transition: box-shadow 0.7s;
   width: 300px;
-  height: 530px;
   &:hover {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
   }
@@ -16,7 +15,7 @@ export const ImageWrapper = styled.div`
 
 export const Image = styled.img`
   width: 300px;
-  height: 350px;
+  height: 300px;
   &:hover {
     cursor: pointer;
     transform: scale(1.3);
