@@ -5,6 +5,7 @@ import CollectionOverview from "../components/collections-overview/collections-o
 import Head from "next/head";
 import axios from "axios";
 import config from "../env-config";
+import Footer from "../components/footer/footer";
 
 const StyledBox = styled(Box)`
   margin-top: 1.5rem;
@@ -37,6 +38,7 @@ const HomePage = ({ collections }) => {
       <StyledBox>
         <CollectionOverview collections={collectionsArray} />
       </StyledBox>
+      <Footer />
     </>
   );
 };

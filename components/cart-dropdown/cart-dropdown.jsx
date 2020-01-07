@@ -47,7 +47,7 @@ const CartDropdown = () => {
               }
               inverted
             >
-              來去結帳
+              Checkout
             </CustomButton>
           </CartDropdownContainer>
         }

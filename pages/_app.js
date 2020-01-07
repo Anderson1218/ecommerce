@@ -45,4 +45,4 @@ class MyApp extends App {
   }
 }
 
-export default withRedux(initializeStore, { debug: true })(MyApp);
+export default withRedux(initializeStore, { debug: false })(MyApp);
