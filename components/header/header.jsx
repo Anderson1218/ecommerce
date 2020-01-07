@@ -14,8 +14,8 @@ import {
 } from "../../redux/user/user.selectors";
 import Router from "next/router";
 
-import { Box, Button, Anchor } from "grommet";
-import { User, Cycle, Currency, Dashboard } from "grommet-icons";
+import { Box, Button } from "grommet";
+import { User, Cycle, Currency } from "grommet-icons";
 import { StyledHeading } from "./header.styles";
 import Modal from "../modal/modal";
 import LoginSignupForm from "../login-signup-form/login-signup-form";
@@ -62,23 +62,14 @@ const Header = () => {
       direction="row"
       align="center"
       justify="between"
-      // background="brand"
       pad={{ left: "xlarge", right: "xlarge", vertical: "small" }}
       elevation="medium"
       height={{ max: "70px" }}
     >
-      <Box direction="row" align="center">
-        <StyledHeading level="3" margin="none" onClick={() => Router.push("/")}>
-          <img alt="" src="/logo.png" width="40" height="40" />
-        </StyledHeading>
-        <Anchor
-          href="https://an-store.firebaseapp.com/"
-          primary
-          target="_blank"
-          icon={<Dashboard size="large" />}
-          color="black"
-        ></Anchor>
-      </Box>
+      <StyledHeading level="3" margin="none" onClick={() => Router.push("/")}>
+        <img alt="" src="/logo.png" width="40" height="40" />
+      </StyledHeading>
+
       <Box direction="row" height={{ max: "40px" }}>
         <Box width={{ min: "40px" }} height={{ min: "30px" }}>
           <CartDropdown />
