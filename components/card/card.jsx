@@ -2,13 +2,13 @@ import React from "react";
 import { Box, Button, Heading, Text } from "grommet";
 import { useDispatch } from "react-redux";
 import { addItem } from "../../redux/cart/cart.actions";
-import { CardWrapper, ImageWrapper, Image } from "./card.styles";
+import { CardContainer, ImageWrapper, Image } from "./card.styles";
 
 const Card = props => {
   const { name, imageUrl, price } = props.item;
   const dispatch = useDispatch();
   return (
-    <CardWrapper>
+    <CardContainer>
       <Box align="center" justify="center">
         <ImageWrapper>
           <Image src={imageUrl}></Image>
@@ -39,7 +39,7 @@ const Card = props => {
           />
         </Box>
       </Box>
-    </CardWrapper>
+    </CardContainer>
   );
 };
 

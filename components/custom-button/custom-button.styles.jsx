@@ -44,7 +44,7 @@ const getButtonStyles = props => {
   return props.inverted ? invertedButtonStyles : buttonStyles;
 };
 
-export const CustomButtonContainer = styled.button`
+export const StyledCustomButton = styled.button`
   display: flex;
   justify-content: center;
   min-width: 165px;

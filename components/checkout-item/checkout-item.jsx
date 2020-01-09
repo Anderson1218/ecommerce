@@ -2,7 +2,7 @@ import React from "react";
 import {
   RemoveButton,
   CheckoutItemContainer,
-  ImageContainer,
+  ImageWrapper,
   Image,
   Text,
   QuantityContainer,
@@ -22,9 +22,9 @@ const CheckoutItem = ({ cartItem }) => {
   const dispatch = useDispatch();
   return (
     <CheckoutItemContainer>
-      <ImageContainer>
+      <ImageWrapper>
         <Image src={imageUrl} alt="item" />
-      </ImageContainer>
+      </ImageWrapper>
       <Text>{name}</Text>
       <QuantityContainer>
         <Arrow onClick={() => dispatch(removeItem(cartItem))}>&#10094;</Arrow>

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const CardWrapper = styled.div`
+export const CardContainer = styled.div`
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
   transition: box-shadow 0.7s;
   width: 300px;

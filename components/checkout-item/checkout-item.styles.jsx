@@ -11,7 +11,7 @@ export const CheckoutItemContainer = styled.div`
   z-index: 1;
 `;
 
-export const ImageContainer = styled.div`
+export const ImageWrapper = styled.div`
   width: 23%;
   padding-right: 15px;
 `;
