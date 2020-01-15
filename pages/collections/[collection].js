@@ -4,9 +4,10 @@ import Card from "../../components/card/card";
 import axios from "axios";
 import config from "../../env-config";
 
-const StyledCollectionPage = styled.div`
+const CollectionPageContainer = styled.div`
   display: flex;
   flex-direction: column;
+  padding: 10px 50px;
 `;
 
 const Title = styled.h2`
@@ -37,14 +38,14 @@ const CollectionPage = ({ collection }) => {
   const { title, items } = collection;
 
   return (
-    <StyledCollectionPage>
+    <CollectionPageContainer>
       <Title>{title}</Title>
       <Items>
         {items.map(item => (
           <Card key={item.id} item={item} />
         ))}
       </Items>
-    </StyledCollectionPage>
+    </CollectionPageContainer>
   );
 };
 

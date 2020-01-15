@@ -3,6 +3,7 @@ import { Box, Button, Heading, Text } from "grommet";
 import { useDispatch } from "react-redux";
 import { addItem } from "../../redux/cart/cart.actions";
 import { CardContainer, ImageWrapper, Image } from "./card.styles";
+import CustomButton from "../custom-button/custom-button";
 
 const Card = props => {
   const { name, imageUrl, price } = props.item;
@@ -29,14 +30,16 @@ const Card = props => {
           gap="small"
           margin="xsmall"
         >
-          <Button
-            label="加到購物車"
-            primary={true}
-            plain={false}
+          <CustomButton
+            // label="Add to Cart"
+            // primary={true}
+            // plain={false}
             onClick={() => {
               dispatch(addItem(props.item));
             }}
-          />
+          >
+            Add to Cart
+          </CustomButton>
         </Box>
       </Box>
     </CardContainer>

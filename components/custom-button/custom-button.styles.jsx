@@ -1,10 +1,10 @@
 import styled, { css } from "styled-components";
 
 const buttonStyles = css`
-  background-color: black;
+  background-color: #228be6;
   color: white;
   border: none;
-
+  border-radius: 10px 10px 10px 10px;
   &:hover {
     background-color: white;
     color: black;
@@ -16,9 +16,9 @@ const invertedButtonStyles = css`
   background-color: white;
   color: black;
   border: 1px solid black;
-
+  border-radius: 10px 10px 10px 10px;
   &:hover {
-    background-color: black;
+    background-color: #228be6;
     color: white;
     border: none;
   }

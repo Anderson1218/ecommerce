@@ -15,7 +15,7 @@ const StripeCheckoutButton = ({ price }) => {
   };
   return (
     <StripeCheckout
-      label="來去付款"
+      label="Pay Now"
       name="Shop Store"
       billingAddress
       shippingAddress

@@ -11,7 +11,7 @@ import Link from "next/link";
 const CollectionPreview = ({ title, items, routeName }) => (
   <PreviewContainer>
     <Link href="/collections/[collection]" as={`/collections/${routeName}`}>
-      <Title>{`更多 ${title.toUpperCase()} 相關的商品 `}&#10132;</Title>
+      <Title>{`More ${title.toUpperCase()}`}&#10132;</Title>
     </Link>
     <Preview>
       {items

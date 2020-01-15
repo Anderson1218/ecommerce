@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import { selectCartTotal, selectCartItems } from "../redux/cart/cart.selectors";
 import CheckoutItem from "../components/checkout-item/checkout-item";
 
-const StyledCheckoutPage = styled.div`
+const CheckoutPageContainer = styled.div`
   width: 70%;
   min-height: 70vh;
   display: flex;
@@ -50,6 +50,10 @@ const EmptyCartItems = styled.div`
   align-items: center;
 `;
 
+const StripeButtonWrapper = styled.div`
+  margin-top: 10px;
+`;
+
 const CheckoutPage = () => {
   const price = useSelector(selectCartTotal);
   const cartItems = useSelector(selectCartItems);
@@ -60,22 +64,22 @@ const CheckoutPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       {!!cartItems.length ? (
-        <StyledCheckoutPage>
+        <CheckoutPageContainer>
           <Header>
             <HeaderBlock>
-              <Text>產品圖示</Text>
+              <Text>Image</Text>
             </HeaderBlock>
             <HeaderBlock>
-              <Text>產品名稱</Text>
+              <Text>Product</Text>
             </HeaderBlock>
             <HeaderBlock>
-              <Text>數量</Text>
+              <Text>Quantity</Text>
             </HeaderBlock>
             <HeaderBlock>
-              <Text>單價</Text>
+              <Text>Price</Text>
             </HeaderBlock>
             <HeaderBlock>
-              <Text>刪除</Text>
+              <Text>Delete</Text>
             </HeaderBlock>
           </Header>
           <ItemsContainer>
@@ -84,11 +88,13 @@ const CheckoutPage = () => {
             ))}
           </ItemsContainer>
           <Text>TOTAL: ${price}</Text>
-          <StripeButton price={price} />
-        </StyledCheckoutPage>
+          <StripeButtonWrapper>
+            <StripeButton price={price} />
+          </StripeButtonWrapper>
+        </CheckoutPageContainer>
       ) : (
         <EmptyCartItems>
-          <h2>快去加東西進購物車</h2>
+          <h2>Add something to cart</h2>
         </EmptyCartItems>
       )}
     </>
