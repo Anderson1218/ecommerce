@@ -51,7 +51,7 @@ const CollectionPage = ({ collection }) => {
 CollectionPage.getInitialProps = async ({ query }) => {
   try {
     const response = await axios.get(
-      `${config.BASE_URL}/api/collections/${query.collection}`
+      `${config.BASE_URL}/api/v0/collections/${query.collection}`
     );
     const collection = response.data;
     return { collection };

@@ -45,7 +45,7 @@ const HomePage = ({ collections }) => {
 
 HomePage.getInitialProps = async () => {
   try {
-    const response = await axios.get(`${config.BASE_URL}/api/collections`);
+    const response = await axios.get(`${config.BASE_URL}/api/v0/collections`);
     const collections = response.data || {};
     return { collections };
   } catch (error) {

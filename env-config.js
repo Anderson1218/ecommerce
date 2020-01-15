@@ -1,11 +1,11 @@
 const BASE_URL =
   process.env.NODE_ENV === "production"
-    ? "https://map-platform-1571383966028.appspot.com"
-    : "http://localhost:8080";
+    ? "http://35.187.155.47:80"
+    : "http://192.168.64.2";
 const AUTH_SERVER_URL =
   process.env.NODE_ENV === "production"
-    ? "https://desolate-wildwood-58442.herokuapp.com"
-    : "http://localhost:8000";
+    ? "http://35.187.155.47:80"
+    : "http://192.168.64.2";
 
 module.exports = {
   BASE_URL,
